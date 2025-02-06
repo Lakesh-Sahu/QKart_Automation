@@ -35,10 +35,18 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'QKART_SANITY_LOGIN.Module4.QkartSanityV2'
+    mainClass = 'QKART_SANITY_LOGIN.Module4.App'
 }
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
-    useJUnitPlatform()
+    // useJUnitPlatform()
+    useTestNG() {
+        suites "src/test/resources/testng.xml"
+    }
+
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED", "STANDARD_OUT", "STANDARD_ERROR"
+        showStandardStreams = true
+    }
 }

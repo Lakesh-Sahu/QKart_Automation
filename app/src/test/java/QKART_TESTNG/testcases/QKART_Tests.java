@@ -32,50 +32,50 @@ public class QKART_Tests {
 
         static WebDriver driver;
         public static String lastGeneratedUserName;
+        static int i;
 
-        @BeforeSuite(alwaysRun=true)
+        @BeforeSuite(alwaysRun = true)
         public static void createDriver() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        System.out.println("createDriver()");
+                driver = new ChromeDriver();
+                driver.manage().window().maximize();
+                System.out.println("createDriver()");
         }
-
 
         /*
          * Testcase01: Verify a new user can successfully register
          */
-    @Test (description = "Verify registration happens correctly", priority = 1, groups = {"Sanity_test"})
-    @Parameters ({"username", "password"})
-    public void TestCase01(String username, String password) throws InterruptedException {
-        Boolean status;
-        // logStatus("Start TestCase", "Test Case 1: Verify User Registration", "DONE");
-        // takeScreenshot(driver, "StartTestCase", "TestCase1");
+        @Test(description = "Verify registration happens correctly", priority = 1, groups = { "Sanity_test" })
+        @Parameters({ "username", "password" })
+        public void TestCase01(String username, String password) throws InterruptedException {
+                Boolean status;
+                // logStatus("Start TestCase", "Test Case 1: Verify User Registration", "DONE");
+                // takeScreenshot(driver, "StartTestCase", "TestCase1");
 
-        // Visit the Registration page and register a new user
-        Register registration = new Register(driver);
-        registration.navigateToRegisterPage();
-        status = registration.registerUser(username, password, true);
-        assertTrue(status, "Failed to register new user");
+                // Visit the Registration page and register a new user
+                Register registration = new Register(driver);
+                registration.navigateToRegisterPage();
+                status = registration.registerUser(username, password, true);
+                assertTrue(status, "Failed to register new user");
 
-        // Save the last generated username
-        lastGeneratedUserName = registration.lastGeneratedUsername;
+                // Save the last generated username
+                lastGeneratedUserName = registration.lastGeneratedUsername;
 
-        // Visit the login page and login with the previuosly registered user
-        Login login = new Login(driver);
-        login.navigateToLoginPage();
-        status = login.PerformLogin(lastGeneratedUserName, password);
-        // logStatus("Test Step", "User Perform Login: ", status ? "PASS" : "FAIL");
-        assertTrue(status, "Failed to login with registered user");
+                // Visit the login page and login with the previuosly registered user
+                Login login = new Login(driver);
+                login.navigateToLoginPage();
+                status = login.PerformLogin(lastGeneratedUserName, password);
+                // logStatus("Test Step", "User Perform Login: ", status ? "PASS" : "FAIL");
+                assertTrue(status, "Failed to login with registered user");
 
-        // Visit the home page and log out the logged in user
-        Home home = new Home(driver);
-        status = home.PerformLogout();
+                // Visit the home page and log out the logged in user
+                Home home = new Home(driver);
+                status = home.PerformLogout();
 
-        // logStatus("End TestCase", "Test Case 1: Verify user Registration : ",
-        // status ? "PASS" : "FAIL");
-        // takeScreenshot(driver, "EndTestCase", "TestCase1");
-        assertTrue(status, "Test Case 1: Verify user Registration : FAIL");
-    }
+                // logStatus("End TestCase", "Test Case 1: Verify user Registration : ",
+                // status ? "PASS" : "FAIL");
+                // takeScreenshot(driver, "EndTestCase", "TestCase1");
+                assertTrue(status, "Test Case 1: Verify user Registration : FAIL");
+        }
 
         /*
          * Verify that an existing user is not allowed to re-register on QKart
@@ -208,7 +208,8 @@ public class QKART_Tests {
                                 "TestCase 3 : Test Case Fail. Expected: no results , actual: Results were available : FAIL");
 
                 sa.assertAll();
-                // sa.assertAll("TestCase 3 : Test Case Fail. Result not available for Yonex or available for Gesundheit : FAIL");
+                // sa.assertAll("TestCase 3 : Test Case Fail. Result not available for Yonex or
+                // available for Gesundheit : FAIL");
         }
 
         /*
@@ -728,7 +729,8 @@ public class QKART_Tests {
                 // takeScreenshot(driver, "EndTestCase", "TestCase9");
 
                 // return status;
-                // sa.assertAll("Test Case 9: Verify that the Privacy Policy, About Us are not displayed correctly : FAIL");
+                // sa.assertAll("Test Case 9: Verify that the Privacy Policy, About Us are not
+                // displayed correctly : FAIL");
                 sa.assertAll();
         }
 
@@ -879,18 +881,28 @@ public class QKART_Tests {
                                 String.valueOf(java.time.LocalDateTime.now()), type, message, status));
         }
 
+        public static void createScreenshotFolder() {
+                try {
+                        for (i = 1; i <= 50; i++) {
+                                File theDir = new File("screenshots/ss" + i);
+                                if (!theDir.exists()) {
+                                        theDir.mkdirs();
+                                        break;
+                                }
+                        }
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+        }
+
         public static void takeScreenshot(WebDriver driver, String screenshotType, String description) {
                 try {
-                        File theDir = new File("/screenshots");
-                        if (!theDir.exists()) {
-                                theDir.mkdirs();
-                        }
-                        String timestamp = String.valueOf(java.time.LocalDateTime.now());
+                        String timestamp = String.valueOf(java.time.LocalDateTime.now()).replaceAll(".:", "");
                         String fileName = String.format("screenshot_%s_%s_%s.png", timestamp, screenshotType,
                                         description);
                         TakesScreenshot scrShot = ((TakesScreenshot) driver);
                         File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
-                        File DestFile = new File("screenshots/" + fileName);
+                        File DestFile = new File("screenshots/ss" + i + "/" + fileName);
                         FileUtils.copyFile(SrcFile, DestFile);
                 } catch (Exception e) {
                         e.printStackTrace();

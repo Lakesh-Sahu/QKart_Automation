@@ -41,7 +41,7 @@ public class Home {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
             // Waiting for the invisiblilty of Logout button
-            wait.until(ExpectedConditions.invisibilityOfElementWithText(By.className("css-1urhf6j"), "Logout"));
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//button[text()='Logout']")));
 
             return true;
         } catch (Exception e) {

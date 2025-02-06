@@ -67,9 +67,9 @@ public class Register {
         register_now_Btn.click();
 
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-            wait.until(ExpectedConditions.or(
-                    ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/login")));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            wait.until(
+                    ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/login"));
         } catch (TimeoutException e) {
             return false;
         }

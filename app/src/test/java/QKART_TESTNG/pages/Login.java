@@ -2,11 +2,10 @@ package QKART_TESTNG.pages;
 
 import java.time.Duration;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Login {
     WebDriver driver;
@@ -43,15 +42,20 @@ public class Login {
         password_txt_box.sendKeys(Password);
 
         // Find the Login Button
-        WebElement loginBtn = driver.findElement(By.className("button"));
+        WebElement loginBtn = driver.findElement(By.xpath("//button[contains(text(), 'Login')]"));
 
         // Click the login Button
         loginBtn.click();
 
         // Wait for login button to invisible
-        FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofMillis(600)).ignoring(NoSuchElementException.class);
-        wait.until(ExpectedConditions.invisibilityOf(loginBtn));
+        // FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
+        //         .pollingEvery(Duration.ofMillis(600)).ignoring(NoSuchElementException.class);
+
+        // wait.until(ExpectedConditions.invisibilityOf(loginBtn));
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Logout']")));
 
         // Return the result of login successful or not
         return this.VerifyUserLoggedIn(Username);

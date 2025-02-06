@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="QKART_TESTNG.testcases.QKART_Tests" tests="11" skipped="0" failures="0" errors="0" timestamp="2025-02-06T20:27:12" hostname="LAKESH-LAPTOP" time="200.0">
+  <properties/>
+  <testcase name="TestCase01[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="11.696"/>
+  <testcase name="TestCase02[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="20.269"/>
+  <testcase name="TestCase03[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="9.053"/>
+  <testcase name="TestCase04[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="18.002"/>
+  <testcase name="TestCase05[0](testUser, abc@123, YONEX Smash Badminton Racquet, Tan Leatherette Weekender Duffle, Addr line 1 addr Line 2 addr line 3)" classname="QKART_TESTNG.testcases.QKART_Tests" time="24.376"/>
+  <testcase name="TestCase06[0](testUser, abc@123, Xtend Smart Watch, Yarine Floor Lamp, Addr line 1 addr Line 2 addr line 3)" classname="QKART_TESTNG.testcases.QKART_Tests" time="26.513"/>
+  <testcase name="TestCase07[0](testUser, abc@123, Stylecon 9 Seater RHS Sofa Set, 10, Addr line 1 addr Line 2 addr line 3)" classname="QKART_TESTNG.testcases.QKART_Tests" time="36.365"/>
+  <testcase name="TestCase08[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="16.551"/>
+  <testcase name="TestCase09[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="7.064"/>
+  <testcase name="TestCase10[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="2.249"/>
+  <testcase name="TestCase11[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="23.979"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
