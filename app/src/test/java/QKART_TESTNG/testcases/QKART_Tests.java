@@ -41,7 +41,7 @@ public class QKART_Tests {
         }
 
         // Testcase01: Verify a new user can successfully register
-        @Test(enabled = false, description = "Verify registration happens correctly", priority = 1, groups = { "Sanity_test" })
+        @Test(enabled = true, description = "Verify registration happens correctly", priority = 1, groups = { "Sanity_test" })
         @Parameters({ "username", "password" })
         public void TestCase01(String username, String password) throws InterruptedException {
                 Boolean status;
@@ -70,7 +70,7 @@ public class QKART_Tests {
         }
 
         // Verify that an existing user is not allowed to re-register on QKart
-        @Test(enabled = false, description = "Verify re-registering an already registered user fails", priority = 2, groups = {
+        @Test(enabled = true, description = "Verify re-registering an already registered user fails", priority = 2, groups = {
                         "Sanity_test" })
         @Parameters({ "username", "password" })
         public void TestCase02(String username, String password) throws InterruptedException {
@@ -97,7 +97,7 @@ public class QKART_Tests {
         }
 
         // Verify the functinality of the search text box
-        @Test(enabled = false, description = "Verify re-registering an already registered user fails", priority = 3, groups = {
+        @Test(enabled = true, description = "Verify re-registering an already registered user fails", priority = 3, groups = {
                         "Sanity_test" })
         @Parameters({ "username", "password" })
         public void TestCase03(String username, String password) throws InterruptedException {
@@ -146,7 +146,7 @@ public class QKART_Tests {
 
         // Verify the presence of size chart and check if the size chart content is as
         // expected
-        @Test(enabled = false, description = "Verify the existence of size chart for certain items and validate contents of size chart", priority = 4, groups = {
+        @Test(enabled = true, description = "Verify the existence of size chart for certain items and validate contents of size chart", priority = 4, groups = {
                         "Regression_Test" })
         @Parameters({ "username", "password" })
         public void TestCase04(String username, String password) throws InterruptedException {
@@ -196,7 +196,7 @@ public class QKART_Tests {
 
         // Verify the complete flow of checking out and placing order for products is
         // working correctly
-        @Test(enabled = false, description = "Verify that a new user can add multiple products in to the cart and Checkout", priority = 5, groups = {
+        @Test(enabled = true, description = "Verify that a new user can add multiple products in to the cart and Checkout", priority = 5, groups = {
                         "Sanity_test" })
         @Parameters({ "username", "password", "product1", "product2", "address" })
         public void TestCase05(String username, String password, String product1, String product2, String address)
@@ -261,7 +261,7 @@ public class QKART_Tests {
         }
 
         // Verify the quantity of items in cart can be updated
-        @Test(enabled = false, description = "Verify that the contents of the cart can be edited", priority = 6, groups = {
+        @Test(enabled = true, description = "Verify that the contents of the cart can be edited", priority = 6, groups = {
                         "Regression_Test" })
         @Parameters({ "username", "password", "product3", "product4", "address" })
         public void TestCase06(String username, String password, String product1, String product2, String address)
@@ -324,7 +324,7 @@ public class QKART_Tests {
                 assertTrue(status, "Test Case 6: Verify that cart can be edited : FAIL");
         }
 
-        @Test(enabled = false, description = "Verify that insufficient balance error is thrown when the wallet balance is not enough", priority = 7, groups = {
+        @Test(enabled = true, description = "Verify that insufficient balance error is thrown when the wallet balance is not enough", priority = 7, groups = {
                         "Sanity_test" })
         @Parameters({ "username", "password", "product5", "quantity", "address" })
         public void TestCase07(String username, String password, String product, int quantity, String address)
@@ -368,7 +368,7 @@ public class QKART_Tests {
                                 "Test Case 7: Verify that insufficient balance error is thrown when the wallet balance is not enough : FAIL");
         }
 
-        @Test(enabled = false, description = "Verify that a product added to a cart is available when a new tab is added", priority = 8, groups = {
+        @Test(enabled = true, description = "Verify that a product added to a cart is available when a new tab is added", priority = 8, groups = {
                         "Regression_Test" })
         @Parameters({ "username", "password" })
         public void TestCase08(String username, String password) throws InterruptedException {
