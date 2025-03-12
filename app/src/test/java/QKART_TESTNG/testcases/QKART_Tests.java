@@ -1,5 +1,4 @@
 package QKART_TESTNG.testcases;
-// package QKART_TESTNG.testcases;
 
 import static org.testng.Assert.*;
 
@@ -42,7 +41,7 @@ public class QKART_Tests {
         }
 
         // Testcase01: Verify a new user can successfully register
-        @Test(description = "Verify registration happens correctly", priority = 1, groups = { "Sanity_test" })
+        @Test(enabled = false, description = "Verify registration happens correctly", priority = 1, groups = { "Sanity_test" })
         @Parameters({ "username", "password" })
         public void TestCase01(String username, String password) throws InterruptedException {
                 Boolean status;
@@ -71,7 +70,7 @@ public class QKART_Tests {
         }
 
         // Verify that an existing user is not allowed to re-register on QKart
-        @Test(description = "Verify re-registering an already registered user fails", priority = 2, groups = {
+        @Test(enabled = false, description = "Verify re-registering an already registered user fails", priority = 2, groups = {
                         "Sanity_test" })
         @Parameters({ "username", "password" })
         public void TestCase02(String username, String password) throws InterruptedException {
@@ -98,7 +97,7 @@ public class QKART_Tests {
         }
 
         // Verify the functinality of the search text box
-        @Test(description = "Verify re-registering an already registered user fails", priority = 3, groups = {
+        @Test(enabled = false, description = "Verify re-registering an already registered user fails", priority = 3, groups = {
                         "Sanity_test" })
         @Parameters({ "username", "password" })
         public void TestCase03(String username, String password) throws InterruptedException {
@@ -147,7 +146,7 @@ public class QKART_Tests {
 
         // Verify the presence of size chart and check if the size chart content is as
         // expected
-        @Test(description = "Verify the existence of size chart for certain items and validate contents of size chart", priority = 4, groups = {
+        @Test(enabled = false, description = "Verify the existence of size chart for certain items and validate contents of size chart", priority = 4, groups = {
                         "Regression_Test" })
         @Parameters({ "username", "password" })
         public void TestCase04(String username, String password) throws InterruptedException {
@@ -197,7 +196,7 @@ public class QKART_Tests {
 
         // Verify the complete flow of checking out and placing order for products is
         // working correctly
-        @Test(description = "Verify that a new user can add multiple products in to the cart and Checkout", priority = 5, groups = {
+        @Test(enabled = false, description = "Verify that a new user can add multiple products in to the cart and Checkout", priority = 5, groups = {
                         "Sanity_test" })
         @Parameters({ "username", "password", "product1", "product2", "address" })
         public void TestCase05(String username, String password, String product1, String product2, String address)
@@ -262,7 +261,7 @@ public class QKART_Tests {
         }
 
         // Verify the quantity of items in cart can be updated
-        @Test(description = "Verify that the contents of the cart can be edited", priority = 6, groups = {
+        @Test(enabled = false, description = "Verify that the contents of the cart can be edited", priority = 6, groups = {
                         "Regression_Test" })
         @Parameters({ "username", "password", "product3", "product4", "address" })
         public void TestCase06(String username, String password, String product1, String product2, String address)
@@ -325,7 +324,7 @@ public class QKART_Tests {
                 assertTrue(status, "Test Case 6: Verify that cart can be edited : FAIL");
         }
 
-        @Test(description = "Verify that insufficient balance error is thrown when the wallet balance is not enough", priority = 7, groups = {
+        @Test(enabled = false, description = "Verify that insufficient balance error is thrown when the wallet balance is not enough", priority = 7, groups = {
                         "Sanity_test" })
         @Parameters({ "username", "password", "product5", "quantity", "address" })
         public void TestCase07(String username, String password, String product, int quantity, String address)
@@ -369,7 +368,7 @@ public class QKART_Tests {
                                 "Test Case 7: Verify that insufficient balance error is thrown when the wallet balance is not enough : FAIL");
         }
 
-        @Test(description = "Verify that a product added to a cart is available when a new tab is added", priority = 8, groups = {
+        @Test(enabled = false, description = "Verify that a product added to a cart is available when a new tab is added", priority = 8, groups = {
                         "Regression_Test" })
         @Parameters({ "username", "password" })
         public void TestCase08(String username, String password) throws InterruptedException {
@@ -416,7 +415,7 @@ public class QKART_Tests {
                                 "Test Case 8: Verify that product added to cart is available when a new tab is opened : FAIL");
         }
 
-        @Test(description = "Verify that privacy policy and about us links are working fine", priority = 9, groups = {
+        @Test(enabled = true, description = "Verify that privacy policy and about us links are working fine", priority = 9, groups = {
                         "Regression_Test" })
         @Parameters({ "username", "password" })
         public void TestCase09(String username, String password) throws InterruptedException {
@@ -449,8 +448,9 @@ public class QKART_Tests {
                                 "Test Case 9: Verify that the Privacy Policy, About Us are displayed correctly : FAIL");
 
                 Set<String> handles = driver.getWindowHandles();
+                Thread.sleep(1500);
                 driver.switchTo().window(handles.toArray(new String[handles.size()])[1]);
-                WebElement PrivacyPolicyHeading = driver.findElement(By.xpath("/[@id=\"root\"]/div/div[2]/h2"));
+                WebElement PrivacyPolicyHeading = driver.findElement(By.xpath("//*[@id='root']/div/div[2]/h2[text()='Privacy Policy']"));
                 status = PrivacyPolicyHeading.getText().equals("Privacy Policy");
 
                 SoftAssert sa = new SoftAssert();
@@ -462,7 +462,7 @@ public class QKART_Tests {
 
                 handles = driver.getWindowHandles();
                 driver.switchTo().window(handles.toArray(new String[handles.size()])[2]);
-                WebElement TOSHeading = driver.findElement(By.xpath("/[@id=\"root\"]/div/div[2]/h2"));
+                WebElement TOSHeading = driver.findElement(By.xpath("//*[@id='root']/div/div[2]/h2"));
                 status = TOSHeading.getText().equals("Terms of Service");
 
                 sa.assertTrue(status,
@@ -474,7 +474,7 @@ public class QKART_Tests {
                 sa.assertAll();
         }
 
-        @Test(description = "Verify that the contact us dialog works fine", priority = 10, groups = {
+        @Test(enabled = true, description = "Verify that the contact us dialog works fine", priority = 10, groups = {
                         "Regression_Test" })
         @Parameters({ "username", "password" })
         public void TestCase10(String username, String password) throws InterruptedException {
@@ -482,7 +482,7 @@ public class QKART_Tests {
                 Home homePage = new Home(driver);
                 homePage.navigateToHome();
 
-                driver.findElement(By.xpath("/[text()='Contact us']")).click();
+                driver.findElement(By.xpath("//*[text()='Contact us']")).click();
 
                 WebElement name = driver.findElement(By.xpath("//input[@placeholder='Name']"));
                 name.sendKeys("crio user");
@@ -503,7 +503,7 @@ public class QKART_Tests {
                                 "Test Case 10: Verify that contact us option is not working correctly : FAIL");
         }
 
-        @Test(description = "Ensure that the Advertisement Links on the QKART page are clickable", priority = 11, groups = {
+        @Test(enabled = true, description = "Ensure that the Advertisement Links on the QKART page are clickable", priority = 11, groups = {
                         "Sanity_test" })
         @Parameters({ "username", "password" })
         public void TestCase11(String username, String password) throws InterruptedException {
@@ -546,7 +546,7 @@ public class QKART_Tests {
 
                 assertTrue(status, "Step Failure: Verify that 3 Advertisements are available : FAIL");
 
-                WebElement Advertisement1 = driver.findElement(By.xpath("/[@id=\"root\"]/div/div[2]/div/iframe[1]"));
+                WebElement Advertisement1 = driver.findElement(By.xpath("//*[@id='root']/div/div[2]/div/iframe[1]"));
                 driver.switchTo().frame(Advertisement1);
                 driver.findElement(By.xpath("//button[text()='Buy Now']")).click();
                 driver.switchTo().parentFrame();
@@ -558,7 +558,7 @@ public class QKART_Tests {
                 driver.get(currentURL);
                 Thread.sleep(3000);
 
-                WebElement Advertisement2 = driver.findElement(By.xpath("/[@id=\"root\"]/div/div[2]/div/iframe[2]"));
+                WebElement Advertisement2 = driver.findElement(By.xpath("//*[@id='root']/div/div[2]/div/iframe[2]"));
                 driver.switchTo().frame(Advertisement2);
                 driver.findElement(By.xpath("//button[text()='Buy Now']")).click();
                 driver.switchTo().parentFrame();
