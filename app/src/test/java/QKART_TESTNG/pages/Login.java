@@ -32,7 +32,7 @@ public class Login {
         // Enter the username
         username_txt_box.sendKeys(Username);
 
-        // Wait for user name to be entered
+        // Wait for username to be entered
         Thread.sleep(1000);
 
         // Find the password Text Box

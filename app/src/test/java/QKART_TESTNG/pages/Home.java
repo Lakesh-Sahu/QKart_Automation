@@ -40,7 +40,7 @@ public class Home {
             // Creating object of WebDriverWait class
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-            // Waiting for the invisiblilty of Logout button
+            // Waiting for the invisibility of Logout button
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//button[text()='Logout']")));
 
             return true;
@@ -84,7 +84,7 @@ public class Home {
 
     // Returns ArrayList of all the card content of search result
     public List<WebElement> getSearchResults() {
-        List<WebElement> searchResults = new ArrayList<WebElement>();
+        List<WebElement> searchResults = new ArrayList<>();
         try {
             // Finds all the result card content of each of search results and return if no
             // result is found then it returns empty ArrayList
@@ -99,14 +99,14 @@ public class Home {
 
     // Returns Boolean based on if the "No products found" text is displayed
     public Boolean isNoResultFound() {
-        Boolean status = false;
+        boolean status = false;
         try {
             // Checks the presence of "No products found" text in the web page
             status = driver.findElement(By.xpath("//*[@id='root']//h4[contains(text(),'No products found')]"))
                     .isDisplayed();
             return status;
         } catch (Exception e) {
-            return status;
+            return false;
         }
     }
 
@@ -142,7 +142,7 @@ public class Home {
     // Return Boolean denoting the status of clicking on the checkout button
     public Boolean clickCheckout() {
         try {
-            // Locate and click on the the Checkout button, if successful return true
+            // Locate and click on the Checkout button, if successful return true
             WebElement checkoutBtn = driver.findElement(By.className("checkout-btn"));
             checkoutBtn.click();
             return true;
@@ -156,7 +156,7 @@ public class Home {
     // operation
     public Boolean changeProductQuantityinCart(String productName, int quantity) {
         try {
-            // Quantity is reached (Note: Keep a look out when then input quantity is 0 or
+            // Quantity is reached (Note: Keep a look-out when then input quantity is 0 or
             // less than 0, here we need to remove the item completely from the cart)
 
             // Locating the cart section
@@ -175,7 +175,7 @@ public class Home {
                         item.findElement(By.xpath("//*[@class='MuiBox-root css-1gjj37g']/div[1]")).getText())) {
 
                     // Getting the current product quantity
-                    currentQty = Integer.valueOf(item.findElement(By.className("css-olyig7")).getText());
+                    currentQty = Integer.parseInt(item.findElement(By.className("css-olyig7")).getText());
 
                     // Clicking on the + or - buttons appropriately to set the correct quantity of
                     // the product
@@ -189,7 +189,7 @@ public class Home {
                             item.findElements(By.tagName("button")).get(0).click();
                         }
 
-                        // Resolve the synchronization issue for multiple thre-ad, synchronized block
+                        // Resolve the synchronization issue for multiple thread, synchronized block
                         // locks the driver object
                         synchronized (driver) {
                             driver.wait(2000);
@@ -197,7 +197,7 @@ public class Home {
 
                         // Updating the current product quantity
                         currentQty = Integer
-                                .valueOf(item.findElement(By.xpath("//div[@data-testid='item-qty']")).getText());
+                                .parseInt(item.findElement(By.xpath("//div[@data-testid='item-qty']")).getText());
                     }
                     // Return true when current quantity becomes equals to the required quantity
                     return true;
@@ -237,7 +237,6 @@ public class Home {
                     return false;
                 }
             }
-
             return true;
         } catch (Exception e) {
             System.out.println("Exception while verifying cart contents: " + e.getMessage());

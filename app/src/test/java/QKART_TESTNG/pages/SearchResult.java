@@ -17,12 +17,9 @@ public class SearchResult {
     public SearchResult(WebElement SearchResultElement) {
         this.parentElement = SearchResultElement;
     }
- 
-    /*
-     * Return title of the parentElement denoting the card content section of a
-     * search result
-     */
-    public String getTitleofResult() {
+
+    //  Return title of the parentElement denoting the card content section of a search result
+    public String getTitleOfResult() {
         String titleOfSearchResult = "";
         // Find the element containing the title (product name) of the search result and
         // assign the extract title text to titleOfSearchResult
@@ -31,11 +28,8 @@ public class SearchResult {
         return titleOfSearchResult;
     }
 
-    /*
-     * Return Boolean denoting if the open size chart operation was successful
-     */
-    // TO DO: CRIO_TASK_MODULE_XPATH - M1_3 Update locators to use Xpath
-    public Boolean openSizechart() {
+    // Return Boolean denoting if the open size chart operation was successful
+    public Boolean openSizeChart() {
         try {
             // Find the link of size chart in the parentElement and click on it
             WebElement element = parentElement.findElement(By.xpath(".//button[text()='Size chart']"));
@@ -49,15 +43,14 @@ public class SearchResult {
         }
     }
 
-    /*
-     * Return Boolean denoting if the close size chart operation was successful
-     */
+
+    // Return Boolean denoting if the close size chart operation was successful
     public Boolean closeSizeChart(WebDriver driver) {
         try {
             synchronized (driver) {
                 driver.wait(2000);
             }
-            
+
             Actions action = new Actions(driver);
 
             // Clicking on "ESC" key closes the size chart modal
@@ -66,7 +59,6 @@ public class SearchResult {
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("MuiDialog-paperScrollPaper")));
-
             return true;
         } catch (Exception e) {
             System.out.println("Exception while closing the size chart: " + e.getMessage());
@@ -74,43 +66,20 @@ public class SearchResult {
         }
     }
 
-    /*
-     * Return Boolean based on if the size chart exists
-     */
+    // Return Boolean based on if the size chart exists
     public Boolean verifySizeChartExists() {
-        Boolean status = false;
         try {
-            /*
-             * Check if the size chart element exists. If it exists, check if the text of
-             * the element is "SIZE CHART". If the text "SIZE CHART" matches for the
-             * element, set status = true , else set to false
-             */
             WebElement element = parentElement.findElement(By.tagName("button"));
-            status = element.getText().equals("SIZE CHART");
-
-            return status;
+            return element.getText().equals("SIZE CHART");
         } catch (Exception e) {
-            return status;
+            return false;
         }
     }
 
-    /*
-     * Return Boolean if the table headers and body of the size chart matches the
-     * expected values
-     */
-    public Boolean validateSizeChartContents(List<String> expectedTableHeaders, List<List<String>> expectedTableBody,
-            WebDriver driver) {
-        Boolean status = true;
+    // Return Boolean if the table headers and body of the size chart matches the expected values
+    public Boolean validateSizeChartContents(List<String> expectedTableHeaders, List<List<String>> expectedTableBody, WebDriver driver) {
+        boolean status = true;
         try {
-            /*
-             * Locate the table element when the size chart modal is open
-             * 
-             * Validate that the contents of expectedTableHeaders is present as the table
-             * header in the same order
-             * 
-             * Validate that the contents of expectedTableBody are present in the table body
-             * in the same order
-             */
             WebElement sizeChartParent = driver.findElement(By.className("MuiDialog-paperScrollPaper"));
             WebElement tableElement = sizeChartParent.findElement(By.tagName("table"));
             List<WebElement> tableHeader = tableElement.findElement(By.tagName("thead")).findElements(By.tagName("th"));
@@ -127,8 +96,7 @@ public class SearchResult {
                 }
             }
 
-            List<WebElement> tableBodyRows = tableElement.findElement(By.tagName("tbody"))
-                    .findElements(By.tagName("tr"));
+            List<WebElement> tableBodyRows = tableElement.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
 
             // Check table body match
             List<WebElement> tempBodyRow;
@@ -139,32 +107,25 @@ public class SearchResult {
                     tempHeaderValue = tempBodyRow.get(j).getText();
 
                     if (!expectedTableBody.get(i).get(j).equals(tempHeaderValue)) {
-                        System.out.println("Failure in Body Comparison: Expected:  " + expectedTableBody.get(i).get(j)
-                                + " Actual: " + tempHeaderValue);
+                        System.out.println("Failure in Body Comparison: Expected:  " + expectedTableBody.get(i).get(j) + " Actual: " + tempHeaderValue);
                         status = false;
                     }
                 }
             }
             return status;
-
         } catch (Exception e) {
             System.out.println("Error while validating chart contents");
             return false;
         }
     }
 
-    /*
-     * Return Boolean based on if the Size drop down exists
-     */
-    public Boolean verifyExistenceofSizeDropdown(WebDriver driver) {
-        Boolean status = false;
+    // Return Boolean based on if the Size drop down exists
+    public Boolean verifyExistenceOfSizeDropdown(WebDriver driver) {
         try {
-            // If the size dropdown exists and is displayed return true, else return false
             WebElement element = driver.findElement(By.className("css-13sljp9"));
-            status = element.isDisplayed();
-            return status;
+            return element.isDisplayed();
         } catch (Exception e) {
-            return status;
+            return false;
         }
     }
 }

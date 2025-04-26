@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="QKART_TESTNG.testcases.QKART_Tests" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-03-12T11:05:06" hostname="LAKESH-LAPTOP" time="35.722">
+<testsuite name="QKART_TESTNG.testcases.QKART_Tests" tests="11" skipped="0" failures="0" errors="0" timestamp="2025-04-25T16:52:46" hostname="LAKESH-LAPTOP" time="190.113">
   <properties/>
-  <testcase name="TestCase09[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="11.059"/>
-  <testcase name="TestCase10[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="2.812"/>
-  <testcase name="TestCase11[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="21.283"/>
+  <testcase name="TestCase01[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="8.545"/>
+  <testcase name="TestCase02[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="18.315"/>
+  <testcase name="TestCase03[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="9.479"/>
+  <testcase name="TestCase04[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="16.622"/>
+  <testcase name="TestCase05[0](testUser, abc@123, YONEX Smash Badminton Racquet, Tan Leatherette Weekender Duffle, Addr line 1 addr Line 2 addr line 3)" classname="QKART_TESTNG.testcases.QKART_Tests" time="24.864"/>
+  <testcase name="TestCase06[0](testUser, abc@123, Xtend Smart Watch, Yarine Floor Lamp, Addr line 1 addr Line 2 addr line 3)" classname="QKART_TESTNG.testcases.QKART_Tests" time="26.259"/>
+  <testcase name="TestCase07[0](testUser, abc@123, Stylecon 9 Seater RHS Sofa Set, 10, Addr line 1 addr Line 2 addr line 3)" classname="QKART_TESTNG.testcases.QKART_Tests" time="34.671"/>
+  <testcase name="TestCase08[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="15.975"/>
+  <testcase name="TestCase09[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="7.808"/>
+  <testcase name="TestCase10[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="1.825"/>
+  <testcase name="TestCase11[0](testUser, abc@123)" classname="QKART_TESTNG.testcases.QKART_Tests" time="23.35"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
