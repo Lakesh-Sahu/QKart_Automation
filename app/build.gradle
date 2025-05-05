@@ -18,8 +18,8 @@ repositories {
 
 dependencies {
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.22.0'
+
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
-    // implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
     implementation 'commons-io:commons-io:2.16.1'
 
     // https://mvnrepository.com/artifact/org.testng/testng
@@ -28,7 +28,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'QKART_SANITY_LOGIN.Module4.App'
+    mainClass = 'qkart.App'
 }
 
 tasks.named('test') {
