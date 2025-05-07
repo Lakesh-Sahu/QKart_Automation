@@ -1,7 +1,6 @@
 package qkart.pages;
 
 import qkart.utility.CommonMethods;
-import qkart.utility.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,18 +11,20 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Thanks extends CommonMethods {
+public class Thanks {
 
     WebDriver driver;
     WebDriverWait wait;
+    CommonMethods cm;
+
 
     // Thanks page url
     String url = "https://crio-qkart-frontend-qa.vercel.app/thanks";
 
-    // Constructor of Thanks class
-    public Thanks() {
-        driver = DriverFactory.getDriver();
+    public Thanks(WebDriver driver) {
+        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        cm = new CommonMethods(this.driver);
     }
 
     public boolean verifyOnThanksPage() {
@@ -44,7 +45,7 @@ public class Thanks extends CommonMethods {
 
     public boolean clickBuyNowBtn() {
         try {
-            return click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Buy Now']"))));
+            return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Buy Now']"))));
         } catch (Exception e) {
             return false;
         }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import qkart.utility.CommonMethods;
-import qkart.utility.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,17 +12,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class Home extends CommonMethods {
+public class Home {
     WebDriver driver;
     WebDriverWait wait;
+    CommonMethods cm;
 
     // Home page url
-    String url = "https://crio-qkart-frontend-qa.vercel.app/";
+    private final String url = "https://crio-qkart-frontend-qa.vercel.app/";
 
-    // Constructor of Home class
-    public Home() {
-        driver = DriverFactory.getDriver();
+    public Home(WebDriver driver) {
+        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        cm = new CommonMethods(this.driver);
     }
 
     public boolean verifyOnHomePage() {
@@ -72,7 +72,7 @@ public class Home extends CommonMethods {
     public boolean performLogout() {
         try {
             // Locate and click on the Logout Button
-            boolean status = click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("MuiButton-text"))));
+            boolean status = cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("MuiButton-text"))));
 
             // Waiting for the invisibility of Logout button
             return status && wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//button[text()='Logout']")));
@@ -88,7 +88,7 @@ public class Home extends CommonMethods {
             WebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@name='search'])[1]")));
 
             // Entering the product name to the search bar
-            sendKeys(searchBox, product);
+            cm.sendKeys(searchBox, product);
 
             String productNameInLower = product.toLowerCase();
             // Waiting for the product name to be visible on product card or for "No products found"
@@ -126,8 +126,8 @@ public class Home extends CommonMethods {
             // Iterate through each product on the page to find the WebElement corresponding to the matching productName
             List<WebElement> cardContents = getSearchResults();
             for (WebElement card : cardContents) {
-                if (productName.contains(findElementFromParentByClassName(wait, card, "css-yg30e6").getText())) {
-                    click(card.findElement(By.tagName("button")));
+                if (productName.contains(cm.findElementFromParentByClassName(wait, card, "css-yg30e6").getText())) {
+                    cm.click(card.findElement(By.tagName("button")));
 
                     // Wait for the product to show on cart section and return true if product is added to the cart
                     return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(String.format("//*[@class='MuiBox-root css-1gjj37g']/div[1][normalize-space()='%s']", productName)))) != null;
@@ -143,7 +143,7 @@ public class Home extends CommonMethods {
     // Locate and click on the Checkout button, if successful return true
     public boolean clickCheckout() {
         try {
-            return click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("checkout-btn"))));
+            return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("checkout-btn"))));
         } catch (Exception e) {
             return false;
         }
@@ -159,7 +159,7 @@ public class Home extends CommonMethods {
 
             // Locating the products in the cart section through above
 //            List<WebElement> cartContents = cartParent.findElements(By.className("css-zgtx0t"));
-            List<WebElement> cartContents = findElementsFromParentByClassName(wait, cartParent, "css-zgtx0t");
+            List<WebElement> cartContents = cm.findElementsFromParentByClassName(wait, cartParent, "css-zgtx0t");
 
             int currentQty;
 
@@ -167,25 +167,25 @@ public class Home extends CommonMethods {
             // required product name or not
             for (WebElement item : cartContents) {
                 // Find the matching product from the cart items
-                if (productName.contains(findElementFromParentByXPath(wait, item, ".//*[@class='MuiBox-root css-1gjj37g']/div[1]").getText())) {
+                if (productName.contains(cm.findElementFromParentByXPath(wait, item, ".//*[@class='MuiBox-root css-1gjj37g']/div[1]").getText())) {
 
                     // Getting the current product quantity
-                    currentQty = Integer.parseInt(findElementFromParentByClassName(wait, item, "css-olyig7").getText());
+                    currentQty = Integer.parseInt(cm.findElementFromParentByClassName(wait, item, "css-olyig7").getText());
 
                     // Clicking on the + or - buttons appropriately to set the correct quantity of the product
                     while (currentQty != quantity) {
                         if (currentQty < quantity) {
                             // increase quantity
-                            click(findElementsFromParentByTagName(wait, item, "button").get(1));
+                            cm.click(cm.findElementsFromParentByTagName(wait, item, "button").get(1));
                         } else {
                             // decrease quantity
-                            click(findElementsFromParentByTagName(wait, item, "button").get(0));
+                            cm.click(cm.findElementsFromParentByTagName(wait, item, "button").get(0));
                         }
                         // Resolve the synchronization issue for multiple thread, synchronized block
                         // locks the driver object
                         Thread.sleep(2000);
                         // Updating the current product quantity
-                        currentQty = Integer.parseInt(findElementFromParentByXPath(wait, item, ".//div[@data-testid='item-qty']").getText());
+                        currentQty = Integer.parseInt(cm.findElementFromParentByXPath(wait, item, ".//div[@data-testid='item-qty']").getText());
                     }
                     // Return true when current quantity becomes equals to the required quantity
                     return true;
@@ -206,13 +206,13 @@ public class Home extends CommonMethods {
             // Iterate through expectedCartContents and check if item with matching product name is present in the cart
 
             WebElement cartParent = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='cart MuiBox-root css-0']")));
-            List<WebElement> cartContents = findElementsFromParentByXPath(wait, cartParent, ".//div[@class='MuiBox-root css-0']");
+            List<WebElement> cartContents = cm.findElementsFromParentByXPath(wait, cartParent, ".//div[@class='MuiBox-root css-0']");
 
             ArrayList<String> actualCartContents = new ArrayList<>() {
             };
 
             for (WebElement cartItem : cartContents) {
-                actualCartContents.add(findElementFromParentByXPath(wait, cartItem, "(//div[contains(@class,'css-1gjj37g')]/div)[position() mod 2 = 1]").getText().trim());
+                actualCartContents.add(cm.findElementFromParentByXPath(wait, cartItem, "(//div[contains(@class,'css-1gjj37g')]/div)[position() mod 2 = 1]").getText().trim());
             }
 
             for (String expected : expectedCartContents) {
@@ -229,7 +229,7 @@ public class Home extends CommonMethods {
 
     public boolean clickPrivacyPolicyBtn() {
         try {
-            return click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Privacy policy"))));
+            return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Privacy policy"))));
         } catch (Exception e) {
             return false;
         }
@@ -237,7 +237,7 @@ public class Home extends CommonMethods {
 
     public boolean clickTermsOfServiceBtn() {
         try {
-            return click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Terms of Service"))));
+            return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Terms of Service"))));
         } catch (Exception e) {
             return false;
         }
@@ -245,7 +245,7 @@ public class Home extends CommonMethods {
 
     public boolean clickContactUsBtn() {
         try {
-            return click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Contact us']"))));
+            return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Contact us']"))));
         } catch (Exception e) {
             return false;
         }
@@ -253,7 +253,7 @@ public class Home extends CommonMethods {
 
     public boolean sendKeysToNameTextbox(String text) {
         try {
-            return sendKeys(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Name']"))), text);
+            return cm.sendKeys(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Name']"))), text);
         } catch (Exception e) {
             return false;
         }
@@ -261,7 +261,7 @@ public class Home extends CommonMethods {
 
     public boolean sendKeysToEmailTextbox(String text) {
         try {
-            return sendKeys(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Email']"))), text);
+            return cm.sendKeys(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Email']"))), text);
         } catch (Exception e) {
             return false;
         }
@@ -269,7 +269,7 @@ public class Home extends CommonMethods {
 
     public boolean sendKeysToMessageTextbox(String text) {
         try {
-            return sendKeys(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Message']"))), text);
+            return cm.sendKeys(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Message']"))), text);
         } catch (Exception e) {
             return false;
         }
@@ -277,7 +277,7 @@ public class Home extends CommonMethods {
 
     public boolean clickContactNowBtn() {
         try {
-            return click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Contact Now']"))));
+            return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Contact Now']"))));
         } catch (Exception e) {
             return false;
         }

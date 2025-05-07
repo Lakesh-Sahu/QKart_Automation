@@ -15,14 +15,24 @@ public class DriverFactory {
     private DriverFactory() {
     }
 
+//    For Singleton WebDriver
+//    public static WebDriver getDriver() {
+//        if (driver == null) {
+//            ChromeOptions op = getChromeOptions();
+//            driver = new ChromeDriver(op);
+//            ((JavascriptExecutor) driver).executeScript(
+//                    "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+//            );
+//        }
+//        return driver;
+//    }
+
     public static WebDriver getDriver() {
-        if (driver == null) {
-            ChromeOptions op = getChromeOptions();
-            driver = new ChromeDriver(op);
-            ((JavascriptExecutor) driver).executeScript(
-                    "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
-            );
-        }
+        ChromeOptions op = getChromeOptions();
+        driver = new ChromeDriver(op);
+        ((JavascriptExecutor) driver).executeScript(
+                "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+        );
         return driver;
     }
 
@@ -34,11 +44,11 @@ public class DriverFactory {
         op.addArguments("start-maximized");  // open Chrome browser in maximized mode
         op.addArguments("--disable-extensions"); // disable all the pre-installed or third party installed extensions
         op.addArguments("--disable-popup-blocking");    // disable blocking of popups by Chrome browser mechanism
-//        op.addArguments("--disable-infobars"); //deprecated
+
         op.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"}); // hides the "Chrome is being controlled by automated software" banner
         op.setExperimentalOption("useAutomationExtension", false); // turns off Selenium's automation extension to reduce detection
 
-        // Disable Chrome's password manager
+//         Disable Chrome's password manager
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("credentials_enable_service", false);   // disables login service or disables Chrome’s credential saving service
         prefs.put("profile.password_manager_enabled", false); // disables password manager UI prompt

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="qkart.testcases.TestsA" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-05-07T15:38:46" hostname="LAKESH-LAPTOP" time="76.6">
+  <properties/>
+  <testcase name="TestCase05[0](testUserA, abc@123, YONEX Smash Badminton Racquet, Tan Leatherette Weekender Duffle, Addr line 1 addr Line 2 addr line 3)" classname="qkart.testcases.TestsA" time="39.405"/>
+  <testcase name="TestCase11[0](testUserB, abc@123)" classname="qkart.testcases.TestsA" time="37.195"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

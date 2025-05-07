@@ -3,24 +3,24 @@ package qkart.pages;
 import java.time.Duration;
 
 import qkart.utility.CommonMethods;
-import qkart.utility.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Login extends CommonMethods {
+public class Login {
     WebDriver driver;
     WebDriverWait wait;
+    CommonMethods cm;
 
     // Login page url
-    String url = "https://crio-qkart-frontend-qa.vercel.app/login";
+    private final String url = "https://crio-qkart-frontend-qa.vercel.app/login";
 
-    // Constructor of Login class
-    public Login() {
-        driver = DriverFactory.getDriver();
+    public Login(WebDriver driver) {
+        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        cm = new CommonMethods(this.driver);
     }
 
     // Navigating to the login page
@@ -51,7 +51,7 @@ public class Login extends CommonMethods {
             WebElement loginBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(), 'Login')]")));
 
             // Enter the username; Enter the password; Click the login Button
-            boolean status = sendKeys(username_txt_box, username) && sendKeys(password_txt_box, password) && click(loginBtn);
+            boolean status = cm.sendKeys(username_txt_box, username) && cm.sendKeys(password_txt_box, password) && cm.click(loginBtn);
 
             // Return the result of login successful or not
             return status && verifyUserLoggedIn(username);
@@ -68,7 +68,7 @@ public class Login extends CommonMethods {
             WebElement logoutBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Logout']")));
 
             // Return true if Username and username_label matches and logout button is displayed
-            return compareString(username_label.getText(), username) && logoutBtn != null;
+            return cm.compareString(username_label.getText(), username) && logoutBtn != null;
         } catch (Exception e) {
             return false;
         }

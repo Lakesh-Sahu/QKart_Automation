@@ -4,7 +4,6 @@ import java.util.List;
 import java.time.Duration;
 
 import qkart.utility.CommonMethods;
-import qkart.utility.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -13,21 +12,24 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SearchResult extends CommonMethods {
+public class SearchResult {
     WebDriver driver;
     WebDriverWait wait;
     WebElement parentElement;
+    CommonMethods cm;
 
-    public SearchResult(WebElement SearchResultElement) {
-        driver = DriverFactory.getDriver();
+
+    public SearchResult(WebDriver driver, WebElement SearchResultElement) {
+        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         parentElement = SearchResultElement;
+        cm = new CommonMethods(this.driver);
     }
 
     //  Return title of the parentElement denoting the card content section of a search result
     public String getTitleOfResult() {
         try {
-            return findElementFromParentByClassName(wait, parentElement, "css-yg30e6").getText();
+            return cm.findElementFromParentByClassName(wait, parentElement, "css-yg30e6").getText();
         } catch (Exception e) {
             return "";
         }
@@ -37,7 +39,7 @@ public class SearchResult extends CommonMethods {
     public boolean openSizeChart() {
         try {
             // Find the link of size chart in the parentElement and click on it
-            boolean status = click(findElementFromParentByXPath(wait, parentElement, ".//button[text()='Size chart']"));
+            boolean status = cm.click(cm.findElementFromParentByXPath(wait, parentElement, ".//button[text()='Size chart']"));
             Thread.sleep(3000);
             return status;
         } catch (Exception e) {
@@ -64,7 +66,7 @@ public class SearchResult extends CommonMethods {
     // Return boolean based on if the size chart exists
     public boolean verifySizeChartExists() {
         try {
-            WebElement element = findElementFromParentByTagName(wait, parentElement, "button");
+            WebElement element = cm.findElementFromParentByTagName(wait, parentElement, "button");
             return element.getText().trim().equalsIgnoreCase("SIZE CHART");
         } catch (Exception e) {
             return false;
@@ -75,8 +77,8 @@ public class SearchResult extends CommonMethods {
     public boolean validateSizeChartContents(List<String> expectedTableHeaders, List<List<String>> expectedTableBody) {
         try {
             WebElement sizeChartParent = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("MuiDialog-paperScrollPaper")));
-            WebElement tableElement = findElementFromParentByTagName(wait, sizeChartParent, "table");
-            List<WebElement> tableHeader = findElementsFromParentByXPath(wait, tableElement, "//thead//th");
+            WebElement tableElement = cm.findElementFromParentByTagName(wait, sizeChartParent, "table");
+            List<WebElement> tableHeader = cm.findElementsFromParentByXPath(wait, tableElement, "//thead//th");
 
             // Check table headers match
             String tempHeaderValue;
@@ -88,12 +90,12 @@ public class SearchResult extends CommonMethods {
                 }
             }
 
-            List<WebElement> tableBodyRows = findElementsFromParentByXPath(wait, tableElement, "//tbody//tr");
+            List<WebElement> tableBodyRows = cm.findElementsFromParentByXPath(wait, tableElement, "//tbody//tr");
 
             // Check table body match
             List<WebElement> tempBodyRow;
             for (int i = 0; i < expectedTableBody.size(); i++) {
-                tempBodyRow =  findElementsFromParentByTagName(wait, tableBodyRows.get(i), "td");
+                tempBodyRow =  cm.findElementsFromParentByTagName(wait, tableBodyRows.get(i), "td");
 
                 for (int j = 0; j < expectedTableBody.get(i).size(); j++) {
                     tempHeaderValue = tempBodyRow.get(j).getText();

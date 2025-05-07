@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="qkart.testcases.TestsE" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-05-07T15:38:46" hostname="LAKESH-LAPTOP" time="81.418">
+  <properties/>
+  <testcase name="TestCase03" classname="qkart.testcases.TestsE" time="31.128"/>
+  <testcase name="TestCase07[0](testUserB, abc@123, Stylecon 9 Seater RHS Sofa Set, 10, Addr line 1 addr Line 2 addr line 3)" classname="qkart.testcases.TestsE" time="50.29"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,6 +1,6 @@
 package qkart.pages;
 
-import qkart.utility.DriverFactory;
+import qkart.utility.CommonMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,14 +11,15 @@ import java.time.Duration;
 public class TermsOfService {
     WebDriver driver;
     WebDriverWait wait;
+    CommonMethods cm;
 
     // Privacy policy page url
     String url = "https://crio-qkart-frontend-qa.vercel.app/terms-of-service";
 
-    // Constructor of Checkout class
-    public TermsOfService() {
-        driver = DriverFactory.getDriver();
+    public TermsOfService(WebDriver driver) {
+        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        cm = new CommonMethods(this.driver);
     }
 
     // Navigate to checkout page

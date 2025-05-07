@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Test case suite e-commerce application">
+<suite name="Test case suite e-commerce application" parallel="classes" thread-count="5">
   <listeners>
-    <listener class-name="qkart.testcases.ListenerClass" />
+    <listener class-name="qkart.utility.ListenerClass" />
   </listeners>
   <test name="Test case execution on Chrome browser">
-    <parameter name="username" value="testUser" />
+    <parameter name="usernameA" value="testUserA" />
+    <parameter name="usernameB" value="testUserB" />
     <parameter name="password" value="abc@123" />
     <parameter name="address" value="Addr line 1 addr Line 2 addr line 3" />
     <parameter name="productName1" value="YONEX Smash Badminton Racquet" />
@@ -20,11 +21,15 @@
       </run>
     </groups> -->
     <classes>
-      <class name="qkart.testcases.QKartTests">
+      <class name="qkart.testcases.TestsA" />
+      <class name="qkart.testcases.TestsB" />
+      <class name="qkart.testcases.TestsC" />
+      <class name="qkart.testcases.TestsD" />
+      <class name="qkart.testcases.TestsE" />
       <!-- <methods>
           <include name="TestCase11" />
         </methods> -->
-      </class>
+<!--      </class>-->
     </classes>
   </test>
 </suite>

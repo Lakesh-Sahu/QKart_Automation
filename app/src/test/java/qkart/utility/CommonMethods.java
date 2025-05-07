@@ -3,13 +3,15 @@ package qkart.utility;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Random;
 
 public class CommonMethods {
-    static WebDriver driver;
+    WebDriver driver;
 
-    static {
-        driver = DriverFactory.getDriver();
+    public CommonMethods(WebDriver driver) {
+        this.driver = driver;
     }
 
     public boolean click(WebElement we) {
@@ -39,6 +41,20 @@ public class CommonMethods {
     public String getCurrentUrl() {
         try {
             return driver.getCurrentUrl();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public String generateDynamicUserName(String username) {
+        try {
+            Random rm = new Random();
+            int rmInt = rm.nextInt(0, 9999);
+            // Getting time stamp for generating a unique username
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+            // Concatenate the timestamp to string to form unique timestamp
+            return username + "_" + timestamp.getTime() + rmInt;
         } catch (Exception e) {
             return "";
         }

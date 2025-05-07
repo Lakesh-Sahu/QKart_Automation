@@ -1,9 +1,7 @@
 package qkart.pages;
 
 import java.util.List;
-
 import qkart.utility.CommonMethods;
-import qkart.utility.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,17 +10,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class Checkout extends CommonMethods {
+public class Checkout {
     WebDriver driver;
     WebDriverWait wait;
+    CommonMethods cm;
 
     // Checkout page url
-    String url = "https://crio-qkart-frontend-qa.vercel.app/checkout";
+    private final String url = "https://crio-qkart-frontend-qa.vercel.app/checkout";
 
-    // Constructor of Checkout class
-    public Checkout() {
-        driver = DriverFactory.getDriver();
+    public Checkout(WebDriver driver) {
+        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        cm = new CommonMethods(this.driver);
     }
 
     // Navigate to checkout page
@@ -49,12 +48,12 @@ public class Checkout extends CommonMethods {
             // Click on the "Add new address" button, enter the address String in the
             // address text box and click on the "ADD" button to save the address
             WebElement addNewAddressBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("add-new-btn")));
-            click(addNewAddressBtn);
+            cm.click(addNewAddressBtn);
 
             WebElement addressBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("MuiOutlinedInput-input")));
-            sendKeys(addressBox, addresString);
+            cm.sendKeys(addressBox, addresString);
             WebElement addBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,'shipping-container')]//button[text()='Add']")));
-            click(addBtn);
+            cm.click(addBtn);
 
             return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format("//*[@class='MuiTypography-root MuiTypography-body1 css-yg30e6' and text()='%s']", addresString)))) != null;
         } catch (Exception e) {
@@ -68,12 +67,12 @@ public class Checkout extends CommonMethods {
             // Get the parent section of addresses
             WebElement parentBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[text()='Shipping']/following-sibling::div[contains(@class,'css-0')]")));
             // Get all the address text WebElement
-            List<WebElement> allBoxes = findElementsFromParentByClassName(wait, parentBox, "address-item");
+            List<WebElement> allBoxes = cm.findElementsFromParentByClassName(wait, parentBox, "address-item");
 
             // Select the matching address
             for (WebElement box : allBoxes) {
-                if (findElementFromParentByClassName(wait, box, "css-yg30e6").getText().replaceAll(" ", "").equals(addressToSelect.replaceAll(" ", ""))) {
-                    return click(findElementFromParentByTagName(wait, box, "input"));
+                if (cm.findElementFromParentByClassName(wait, box, "css-yg30e6").getText().replaceAll(" ", "").equals(addressToSelect.replaceAll(" ", ""))) {
+                    return cm.click(cm.findElementFromParentByTagName(wait, box, "input"));
                 }
             }
             return false;
@@ -86,7 +85,7 @@ public class Checkout extends CommonMethods {
     public boolean clickPlaceOrderBtn() {
         try {
             // Find the "PLACE ORDER" button and click on it
-            return click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='PLACE ORDER']"))));
+            return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='PLACE ORDER']"))));
         } catch (Exception e) {
             return false;
         }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="qkart.testcases.TestsD" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-05-07T15:38:46" hostname="LAKESH-LAPTOP" time="83.325">
+  <properties/>
+  <testcase name="TestCase01[0](testUserA, abc@123)" classname="qkart.testcases.TestsD" time="22.638"/>
+  <testcase name="TestCase06[0](testUserA, abc@123, Xtend Smart Watch, Yarine Floor Lamp, Addr line 1 addr Line 2 addr line 3)" classname="qkart.testcases.TestsD" time="60.683"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
