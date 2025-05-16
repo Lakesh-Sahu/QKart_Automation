@@ -7,5 +7,5 @@
  * in the user manual at https://docs.gradle.org/8.0.2/userguide/multi_project_builds.html
  */
 
-rootProject.name = 'lakeshsahu22-ME_QKART_QA_V2'
+rootProject.name = 'QKart_Automation'
 include('app')

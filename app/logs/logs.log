@@ -1,0 +1,30 @@
+
+[INFO ] 2025-05-13 23:40:29.592 qkart.utility.ListenerClass 42 - ##### Test Cases Started ##### [Test worker]
+
+[ERROR] 2025-05-13 23:41:44.246 qkart.pages.Register 62 - qkart.testcases.TestsA TestCase02 60 Exception while registering user with username userTesterA_17471598658944605 and password abc@123 and confirm password abc@123 : Expected condition failed: waiting for url to be "https://crio-qkart-frontend-qa.vercel.app/login". Current url: "https://crio-qkart-frontend-qa.vercel.app/register" (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-2]
+
+[ERROR] 2025-05-13 23:41:46.126 qkart.pages.Home 117 - qkart.testcases.TestsA TestCase03 95 Exception while getting search results : Expected condition failed: waiting for visibility of all elements located by By.className: css-sycj1h (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-3]
+
+[INFO ] 2025-05-13 23:43:31.449 qkart.utility.ListenerClass 50 - ##### Test Cases Ended ##### [Test worker]
+
+[INFO ] 2025-05-14 00:59:30.618 qkart.utility.ListenerClass 42 - ##### Test Cases Started ##### [Test worker]
+
+[INFO ] 2025-05-14 01:08:34.153 qkart.utility.ListenerClass 42 - ##### Test Cases Started ##### [Test worker]
+
+[ERROR] 2025-05-14 01:09:03.594 qkart.pages.Home 117 - qkart.testcases.TestsA TestCase03 95 Exception while getting search results : Expected condition failed: waiting for visibility of all elements located by By.className: css-sycj1h (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-3]
+
+[ERROR] 2025-05-14 01:09:04.087 qkart.pages.Register 62 - qkart.testcases.TestsA TestCase02 60 Exception while registering user with username userTesterA_17471651186172174 and password abc@123 and confirm password abc@123 : Expected condition failed: waiting for url to be "https://crio-qkart-frontend-qa.vercel.app/login". Current url: "https://crio-qkart-frontend-qa.vercel.app/register" (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-2]
+
+[INFO ] 2025-05-14 01:10:36.721 qkart.utility.ListenerClass 50 - ##### Test Cases Ended ##### [Test worker]
+
+[INFO ] 2025-05-14 13:37:17.254 qkart.utility.ListenerClass 42 - ##### Test Cases Started ##### [Test worker]
+
+[ERROR] 2025-05-14 13:37:47.192 qkart.pages.Home 117 - qkart.testcases.TestsA TestCase03 95 Exception while getting search results : Expected condition failed: waiting for visibility of all elements located by By.className: css-sycj1h (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-3]
+
+[ERROR] 2025-05-14 13:37:48.445 qkart.pages.Register 62 - qkart.testcases.TestsA TestCase02 60 Exception while registering user with username userTesterA_17472100437358184 and password abc@123 and confirm password abc@123 : Expected condition failed: waiting for url to be "https://crio-qkart-frontend-qa.vercel.app/login". Current url: "https://crio-qkart-frontend-qa.vercel.app/register" (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-2]
+
+[ERROR] 2025-05-14 13:39:19.511 qkart.pages.Home 71 - qkart.testcases.TestsB TestCase09 124 Exception while waiting for invisibility of Logged in Successfully banner : Expected condition failed: waiting for element to no longer be visible: By.xpath: //div[text()='Logged in successfully'] (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-1]
+
+[ERROR] 2025-05-14 13:39:19.851 qkart.utility.ListenerClass 64 - TestsB.java TestCase09 124 - Logged in successfully banner is still visible expected [true] but found [false] - FAILED [TestNG-test-All Testcases-1]
+
+[INFO ] 2025-05-14 13:39:20.028 qkart.utility.ListenerClass 50 - ##### Test Cases Ended ##### [Test worker]
