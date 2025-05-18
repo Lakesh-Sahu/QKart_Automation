@@ -11,84 +11,54 @@ import java.util.Arrays;
 import static org.testng.Assert.assertFalse;
 
 public class Screenshot extends Base {
-    static int i;
 
-    public static void createScreenshotFolder() {
+    // takes the screenshot to attach in the Extent Report
+    public static String capture(String callerInfo) {
         try {
-            for (i = 1; i <= 100; i++) {
-                File theDir = new File("screenshots/ss" + i);
-                if (!theDir.exists()) {
-                    theDir.mkdirs();
-                    break;
-                }
-            }
-        } catch (Exception e) {
-            assertFalse(false, "Creating Screenshot/ss folder : Fail\n" + Arrays.toString(e.getStackTrace()));
-        }
-    }
+            WebDriver driver = ContextManager.getContext().getDriver();
 
-    // screenshot method to track the test
-    public static void takeScreenshot(String className, String methodName, String screenshotType, String description) {
-        try {
-            WebDriver driver = getDriverForScreenshot(className);
             if (driver != null) {
-                String timestamp = String.valueOf(java.time.LocalDateTime.now()).replaceAll(".:", "");
-                String fileName = String.format("%s_%s_%s_%s_%s.png", timestamp, className, methodName, screenshotType, description);
+                String timestamp = String.valueOf(java.time.LocalDateTime.now()).replaceAll("[.:]", "");
+                String relativePath = "/extent_reports/" + singleTimeStamp + "/" + timestamp + "_" + callerInfo + ".png";
                 TakesScreenshot scrShot = ((TakesScreenshot) driver);
                 File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
-                File DestFile = new File("screenshots/ss" + i + "/" + fileName);
+                File DestFile = new File(System.getProperty("user.dir") + relativePath);
                 FileUtils.copyFile(SrcFile, DestFile);
+                return relativePath;
             }
         } catch (Exception e) {
             assertFalse(false, "Taking screenshot : Fail" + Arrays.toString(e.getStackTrace()));
         }
+        return "";
     }
 
-//    // takes the screenshot to attach in the Extent Report
-//    public static String capture(String className, String methodName, String screenshotType, String description) {
-//        String fileName = "";
+
+//    public static void createScreenshotFolder() {
 //        try {
-//            WebDriver driver = getDriverForScreenshot(className);
-//
+//            File theDir = new File("screenshots/" + singleTimeStamp);
+//                if (!theDir.exists()) {
+//                    theDir.mkdirs();
+//                }
+//        } catch (Exception e) {
+//            assertFalse(false, "Creating screenshot/" + singleTimeStamp + " folder : Fail\n" + Arrays.toString(e.getStackTrace()));
+//        }
+//    }
+
+//    // takes the screenshot to track the test
+//    public static void takeScreenshot(String className, String methodName, String screenshotType, String description) {
+//        try {
+//            WebDriver driver = ContextManager.getContext().getDriver();
 //            if (driver != null) {
-//                String timestamp = String.valueOf(java.time.LocalDateTime.now()).replaceAll(".:", "");
-//                fileName = String.format("%s_%s_%s_%s_%s.png", timestamp, className, methodName, screenshotType, description);
+//                String timestamp = String.valueOf(java.time.LocalDateTime.now()).replaceAll("[.:]", "");
+//                String fileName = String.format("%s_%s_%s_%s_%s.png", timestamp, className, methodName, screenshotType, description);
+//                String relativePath = "/screenshots/" + singleTimeStamp + "/" + fileName;
 //                TakesScreenshot scrShot = ((TakesScreenshot) driver);
 //                File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
-//                File DestFile = new File("/extent reports/screenshots" + "/" + fileName);
+//                File DestFile = new File(System.getProperty("user.dir") + relativePath);
 //                FileUtils.copyFile(SrcFile, DestFile);
 //            }
 //        } catch (Exception e) {
 //            assertFalse(false, "Taking screenshot : Fail" + Arrays.toString(e.getStackTrace()));
 //        }
-//        return "screenshots/" + fileName;
 //    }
-
-    // takes the screenshot to attach in the Extent Report
-    public static String capture() {
-        String fileName = "";
-        try {
-            WebDriver driver = getDriverForScreenshot();
-
-            if (driver != null) {
-                String timestamp = String.valueOf(java.time.LocalDateTime.now()).replaceAll(".:", "");
-                fileName = String.format("%s.png", timestamp);
-                TakesScreenshot scrShot = ((TakesScreenshot) driver);
-                File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
-                File DestFile = new File("/extent reports/screenshots" + "/" + fileName);
-                FileUtils.copyFile(SrcFile, DestFile);
-            }
-        } catch (Exception e) {
-            assertFalse(false, "Taking screenshot : Fail" + Arrays.toString(e.getStackTrace()));
-        }
-        return "screenshots/" + fileName;
-    }
-
-    public static WebDriver getDriverForScreenshot() {
-        return ContextManager.getContext().getDriver();
-    }
-
-    public static WebDriver getDriverForScreenshot(String className) {
-        return ContextManager.getContext().getDriver();
-    }
 }

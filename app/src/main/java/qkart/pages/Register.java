@@ -30,7 +30,8 @@ public class Register extends Base {
             driver.get(url);
             return true;
         } catch (Exception e) {
-            log.error("{} Exception while navigating to Register Page : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while navigating to Register Page");
+            log.error("{} Exception while navigating to Register Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -39,7 +40,8 @@ public class Register extends Base {
         try {
             return driver.getCurrentUrl().equals(url);
         } catch (Exception e) {
-            log.error("{} Exception while verifying on Register Page : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while verifying on Register Page");
+            log.error("{} Exception while verifying on Register Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -57,9 +59,10 @@ public class Register extends Base {
 
             // Type the last generated username in the username field; Enter the Password value; Enter the Confirm Password Value; Click the register now button
             boolean status = cm.sendKeys(username_txt_box, usernameToEnter) && cm.sendKeys(password_txt_box, passwordToEnter) && cm.sendKeys(confirm_password_txt_box, confirmPassword) && cm.click(register_now_Btn);
-            return status && wait.until(ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/login"));
+            return status && wait.until(ExpectedConditions.urlToBe("https://crio-qkart-qa.vercel.app/login"));
         } catch (Exception e) {
-            log.error("{} Exception while registering user with username {} and password {} and confirm password {} : {}", logCallerInfo(Thread.currentThread().getStackTrace()), usernameToEnter, passwordToEnter, confirmPassword, cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while registering user with username " + usernameToEnter + " and password " + passwordToEnter + " and confirm password " + confirmPassword);
+            log.error("{} Exception while registering user with username {} and password {} and confirm password {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), usernameToEnter, passwordToEnter, confirmPassword, getMessageFromException(e));
             return false;
         }
     }

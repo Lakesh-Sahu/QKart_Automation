@@ -101,7 +101,7 @@ public class TestsB extends Base {
         assertTrue(oc.homePage.performLogout(), "User is unable to logout after login from home page");
     }
 
-    @Test(enabled = true, description = "Verify that Privacy Policy and Terms of Service links are working fine", priority = 9, groups = {"Regression_Test"})
+    @Test(enabled = true, description = "Verify that Privacy Policy, Terms of Service and About Us links are working fine", priority = 9, groups = {"Regression_Test", "T2"})
     @Parameters({"usernameB", "password"})
     public void TestCase09(String username, String password) throws InterruptedException {
 
@@ -127,11 +127,11 @@ public class TestsB extends Base {
 
         Set<String> handles = oc.cm.getWindowHandles();
         Thread.sleep(1500);
-        assertTrue(oc.cm.switchToWindow(handles.toArray(new String[handles.size()])[1]), "User is unable to switch to new Privacy Policy window");
+        assertTrue(oc.cm.switchToWindow(handles.toArray(new String[0])[1]), "User is unable to switch to new Privacy Policy window");
 
         assertEquals(oc.privacyPolicyPage.getPrivacyPolicyHeadingText().trim(), "Privacy Policy", "Privacy Policy heading does not match");
 
-        assertTrue(oc.cm.switchToWindow(handles.toArray(new String[handles.size()])[0]), "User is unable to switch to original window");
+        assertTrue(oc.cm.switchToWindow(handles.toArray(new String[0])[0]), "User is unable to switch to original window");
 
         assertTrue(oc.homePage.waitForInvisibilityOfLoggedInSuccessfullyBanner(), "Logged in successfully banner is still visible");
 
@@ -139,13 +139,28 @@ public class TestsB extends Base {
 
         handles = oc.cm.getWindowHandles();
 
-        assertTrue(oc.cm.switchToWindow(handles.toArray(new String[handles.size()])[2]), "User is unable to switch to new Terms of Service window");
+        assertTrue(oc.cm.switchToWindow(handles.toArray(new String[0])[2]), "User is unable to switch to new Terms of Service window");
 
         assertEquals(oc.termsOfService.getTermsOfServiceHeadingText().trim(), "Terms of Service", "Terms of Service heading does not match");
 
-        assertTrue(oc.cm.closeWindow(), "User is unable to close the Terms of Service new tab");
-        assertTrue(oc.cm.switchAndCloseTheWindow(handles.toArray(new String[handles.size()])[1]), "User is unable to switch to Privacy Policy window and close it");
-        assertTrue(oc.cm.switchToWindow(handles.toArray(new String[handles.size()])[0]), "User is unable to switch to original window and close it");
+        assertTrue(oc.cm.switchToWindow(handles.toArray(new String[0])[0]), "User is unable to switch to original window");
+
+        assertTrue(oc.homePage.clickAboutUsBtn(), "User is unable to click About Us button");
+
+        handles = oc.cm.getWindowHandles();
+
+        assertTrue(oc.cm.switchToWindow(handles.toArray(new String[0])[3]), "User is unable to switch to new About Us window");
+
+        assertEquals(oc.aboutUs.getAboutUsHeadingText().trim(), "About Us", "About Us heading does not match");
+
+        assertTrue(oc.cm.closeWindow(), "User is unable to close the About Us new tab");
+
+        assertTrue(oc.cm.switchAndCloseTheWindow(handles.toArray(new String[0])[2]), "User is unable to switch to Terms of Service window and close it");
+
+        assertTrue(oc.cm.switchAndCloseTheWindow(handles.toArray(new String[0])[1]), "User is unable to switch to Privacy Policy window and close it");
+
+        assertTrue(oc.cm.switchToWindow(handles.toArray(new String[0])[0]), "User is unable to switch to original window and close it");
+
         assertTrue(oc.homePage.performLogout(), "User is unable to logout after login from home page");
     }
 

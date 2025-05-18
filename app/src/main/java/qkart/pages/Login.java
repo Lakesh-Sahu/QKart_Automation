@@ -30,7 +30,8 @@ public class Login extends Base {
             driver.get(url);
             return true;
         } catch (Exception e) {
-            log.error("{} Exception while navigating to Login Page : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while navigating to Login Page");
+            log.error("{} Exception while navigating to Login Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -39,7 +40,8 @@ public class Login extends Base {
         try {
             return wait.until(ExpectedConditions.urlToBe(url));
         } catch (Exception e) {
-            log.error("{} Exception while verifying on Login Page : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while verifying on Login Page");
+            log.error("{} Exception while verifying on Login Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -59,7 +61,8 @@ public class Login extends Base {
             // Return the result of login successful or not
             return status && verifyUserLoggedIn(username);
         } catch (Exception e) {
-            log.error("{} Exception while performing Login with username {} and password {} : {}", logCallerInfo(Thread.currentThread().getStackTrace()), username, password, cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while performing Login with username " + username + " and password " + password);
+            log.error("{} Exception while performing Login with username {} and password {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), username, password, getMessageFromException(e));
             return false;
         }
     }
@@ -74,7 +77,8 @@ public class Login extends Base {
             // Return true if Username and username_label matches and logout button is displayed
             return cm.compareString(username_label.getText(), username) && logoutBtn != null;
         } catch (Exception e) {
-            log.error("{} Exception while verifying user is Logged in for username {} : {}", logCallerInfo(Thread.currentThread().getStackTrace()), username, cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while verifying user is Logged in for username " + username);
+            log.error("{} Exception while verifying user is Logged in for username {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), username, getMessageFromException(e));
             return false;
         }
     }

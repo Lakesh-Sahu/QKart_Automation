@@ -1,30 +1,106 @@
 
-[INFO ] 2025-05-13 23:40:29.592 qkart.utility.ListenerClass 42 - ##### Test Cases Started ##### [Test worker]
+[INFO ] 2025-05-18 01:28:00.588 qkart.utility.ListenerClass 45 - ##### Test Cases Started ##### [Test worker]
 
-[ERROR] 2025-05-13 23:41:44.246 qkart.pages.Register 62 - qkart.testcases.TestsA TestCase02 60 Exception while registering user with username userTesterA_17471598658944605 and password abc@123 and confirm password abc@123 : Expected condition failed: waiting for url to be "https://crio-qkart-frontend-qa.vercel.app/login". Current url: "https://crio-qkart-frontend-qa.vercel.app/register" (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-2]
+[ERROR] 2025-05-18 01:28:31.189 qkart.pages.Register 65 - qkart.testcases.TestsA TestCase02 59 Exception while registering user with username userTesterA_17475118869734764 and password abc@123 and confirm password abc@123 : Expected condition failed: waiting for url to be "https://crio-qkart-qa.vercel.app/login". Current url: "https://crio-qkart-qa.vercel.app/register" (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-2]
 
-[ERROR] 2025-05-13 23:41:46.126 qkart.pages.Home 117 - qkart.testcases.TestsA TestCase03 95 Exception while getting search results : Expected condition failed: waiting for visibility of all elements located by By.className: css-sycj1h (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-3]
+[ERROR] 2025-05-18 01:28:33.301 qkart.pages.Home 125 - qkart.testcases.TestsA TestCase03 94 Exception while getting search results : Expected condition failed: waiting for visibility of all elements located by By.className: css-sycj1h (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-3]
 
-[INFO ] 2025-05-13 23:43:31.449 qkart.utility.ListenerClass 50 - ##### Test Cases Ended ##### [Test worker]
+[INFO ] 2025-05-18 01:30:01.029 qkart.utility.ListenerClass 53 - ##### Test Cases Ended ##### [Test worker]
 
-[INFO ] 2025-05-14 00:59:30.618 qkart.utility.ListenerClass 42 - ##### Test Cases Started ##### [Test worker]
+[INFO ] 2025-05-18 11:34:12.148 qkart.utility.ListenerClass 54 - ##### Test Cases Started ##### [Test worker]
 
-[INFO ] 2025-05-14 01:08:34.153 qkart.utility.ListenerClass 42 - ##### Test Cases Started ##### [Test worker]
+[ERROR] 2025-05-18 11:34:15.555 qkart.utility.ListenerClass 77 - TestsB.java TestCase09 109 - This is the skip - SKIPPED [TestNG-test-All Testcases-1]
 
-[ERROR] 2025-05-14 01:09:03.594 qkart.pages.Home 117 - qkart.testcases.TestsA TestCase03 95 Exception while getting search results : Expected condition failed: waiting for visibility of all elements located by By.className: css-sycj1h (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-3]
+[INFO ] 2025-05-18 11:34:15.716 qkart.utility.ListenerClass 62 - ##### Test Cases Ended ##### [Test worker]
 
-[ERROR] 2025-05-14 01:09:04.087 qkart.pages.Register 62 - qkart.testcases.TestsA TestCase02 60 Exception while registering user with username userTesterA_17471651186172174 and password abc@123 and confirm password abc@123 : Expected condition failed: waiting for url to be "https://crio-qkart-frontend-qa.vercel.app/login". Current url: "https://crio-qkart-frontend-qa.vercel.app/register" (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-2]
+[INFO ] 2025-05-18 11:35:18.575 qkart.utility.ListenerClass 54 - ##### Test Cases Started ##### [Test worker]
 
-[INFO ] 2025-05-14 01:10:36.721 qkart.utility.ListenerClass 50 - ##### Test Cases Ended ##### [Test worker]
+[ERROR] 2025-05-18 11:35:20.307 qkart.utility.ListenerClass 77 - TestsB.java TestCase09 109 - This is the skip - SKIPPED [TestNG-test-All Testcases-1]
 
-[INFO ] 2025-05-14 13:37:17.254 qkart.utility.ListenerClass 42 - ##### Test Cases Started ##### [Test worker]
+[INFO ] 2025-05-18 11:35:20.433 qkart.utility.ListenerClass 62 - ##### Test Cases Ended ##### [Test worker]
 
-[ERROR] 2025-05-14 13:37:47.192 qkart.pages.Home 117 - qkart.testcases.TestsA TestCase03 95 Exception while getting search results : Expected condition failed: waiting for visibility of all elements located by By.className: css-sycj1h (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-3]
+[INFO ] 2025-05-18 11:39:01.161 qkart.utility.ListenerClass 56 - ##### Test Cases Started ##### [Test worker]
 
-[ERROR] 2025-05-14 13:37:48.445 qkart.pages.Register 62 - qkart.testcases.TestsA TestCase02 60 Exception while registering user with username userTesterA_17472100437358184 and password abc@123 and confirm password abc@123 : Expected condition failed: waiting for url to be "https://crio-qkart-frontend-qa.vercel.app/login". Current url: "https://crio-qkart-frontend-qa.vercel.app/register" (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-2]
+[ERROR] 2025-05-18 11:39:02.744 qkart.utility.ListenerClass 79 - TestsB.java TestCase09 109 - This is the skip - SKIPPED [TestNG-test-All Testcases-1]
 
-[ERROR] 2025-05-14 13:39:19.511 qkart.pages.Home 71 - qkart.testcases.TestsB TestCase09 124 Exception while waiting for invisibility of Logged in Successfully banner : Expected condition failed: waiting for element to no longer be visible: By.xpath: //div[text()='Logged in successfully'] (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-1]
+[INFO ] 2025-05-18 11:39:02.954 qkart.utility.ListenerClass 64 - ##### Test Cases Ended ##### [Test worker]
 
-[ERROR] 2025-05-14 13:39:19.851 qkart.utility.ListenerClass 64 - TestsB.java TestCase09 124 - Logged in successfully banner is still visible expected [true] but found [false] - FAILED [TestNG-test-All Testcases-1]
+[INFO ] 2025-05-18 11:58:34.839 qkart.utility.ListenerClass 51 - ##### Test Cases Started ##### [Test worker]
 
-[INFO ] 2025-05-14 13:39:20.028 qkart.utility.ListenerClass 50 - ##### Test Cases Ended ##### [Test worker]
+[ERROR] 2025-05-18 11:58:36.520 qkart.utility.ListenerClass 74 - TestsB.java TestCase09 109 - This is the skip - SKIPPED [TestNG-test-All Testcases-1]
+
+[INFO ] 2025-05-18 11:58:36.744 qkart.utility.ListenerClass 59 - ##### Test Cases Ended ##### [Test worker]
+
+[INFO ] 2025-05-18 12:00:54.076 qkart.utility.ListenerClass 51 - ##### Test Cases Started ##### [Test worker]
+
+[ERROR] 2025-05-18 12:00:55.742 qkart.utility.ListenerClass 74 - TestsB.java TestCase09 109 - This is the skip - SKIPPED [TestNG-test-All Testcases-1]
+
+[INFO ] 2025-05-18 12:00:55.906 qkart.utility.ListenerClass 59 - ##### Test Cases Ended ##### [Test worker]
+
+[INFO ] 2025-05-18 12:10:10.930 qkart.utility.ListenerClass 52 - ##### Test Cases Started ##### [Test worker]
+
+[ERROR] 2025-05-18 12:10:12.506 qkart.utility.ListenerClass 75 - TestsB.java TestCase09 109 - This is the skip - SKIPPED [TestNG-test-All Testcases-1]
+
+[INFO ] 2025-05-18 12:10:12.708 qkart.utility.ListenerClass 60 - ##### Test Cases Ended ##### [Test worker]
+
+[INFO ] 2025-05-18 12:10:59.656 qkart.utility.ListenerClass 52 - ##### Test Cases Started ##### [Test worker]
+
+[ERROR] 2025-05-18 12:11:30.208 qkart.pages.Register 65 - qkart.testcases.TestsA TestCase02 59 Exception while registering user with username userTesterA_17475504621939568 and password abc@123 and confirm password abc@123 : Expected condition failed: waiting for url to be "https://crio-qkart-qa.vercel.app/login". Current url: "https://crio-qkart-qa.vercel.app/register" (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-2]
+
+[ERROR] 2025-05-18 12:11:31.739 qkart.pages.Home 125 - qkart.testcases.TestsA TestCase03 94 Exception while getting search results : Expected condition failed: waiting for visibility of all elements located by By.className: css-sycj1h (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-3]
+
+[ERROR] 2025-05-18 12:11:59.060 qkart.utility.ListenerClass 75 - TestsB.java TestCase09 109 - This is the skip - SKIPPED [TestNG-test-All Testcases-1]
+
+[INFO ] 2025-05-18 12:12:47.768 qkart.utility.ListenerClass 60 - ##### Test Cases Ended ##### [Test worker]
+
+[INFO ] 2025-05-18 12:18:30.529 qkart.utility.ListenerClass 52 - ##### Test Cases Started ##### [Test worker]
+
+[INFO ] 2025-05-18 12:19:44.311 qkart.utility.ListenerClass 52 - ##### Test Cases Started ##### [Test worker]
+
+[ERROR] 2025-05-18 12:20:12.333 qkart.pages.Register 65 - qkart.testcases.TestsA TestCase02 59 Exception while registering user with username userTesterA_17475509884379680 and password abc@123 and confirm password abc@123 : Expected condition failed: waiting for url to be "https://crio-qkart-qa.vercel.app/login". Current url: "https://crio-qkart-qa.vercel.app/register" (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-2]
+
+[ERROR] 2025-05-18 12:20:13.306 qkart.pages.Home 125 - qkart.testcases.TestsA TestCase03 94 Exception while getting search results : Expected condition failed: waiting for visibility of all elements located by By.className: css-sycj1h (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-3]
+
+[ERROR] 2025-05-18 12:21:06.313 qkart.utility.ListenerClass 75 - TestsB.java TestCase09 140 - Index 2 out of bounds for length 2 - FAILED [TestNG-test-All Testcases-1]
+
+[INFO ] 2025-05-18 12:21:51.460 qkart.utility.ListenerClass 60 - ##### Test Cases Ended ##### [Test worker]
+
+[INFO ] 2025-05-18 12:55:32.009 qkart.utility.ListenerClass 67 - ##### Test Cases Started ##### [Test worker]
+
+[INFO ] 2025-05-18 12:56:01.916 qkart.utility.ListenerClass 75 - ##### Test Cases Ended ##### [Test worker]
+
+[INFO ] 2025-05-18 12:56:21.198 qkart.utility.ListenerClass 67 - ##### Test Cases Started ##### [Test worker]
+
+[ERROR] 2025-05-18 12:56:42.239 qkart.utility.ListenerClass 90 - TestsB.java TestCase09 152 - Index 5 out of bounds for length 4 - FAILED [TestNG-test-All Testcases-1]
+
+[INFO ] 2025-05-18 12:56:42.419 qkart.utility.ListenerClass 75 - ##### Test Cases Ended ##### [Test worker]
+
+[INFO ] 2025-05-18 13:04:19.847 qkart.utility.ListenerClass 59 - ##### Test Cases Started ##### [Test worker]
+
+[ERROR] 2025-05-18 13:04:41.264 qkart.utility.ListenerClass 82 - TestsB.java TestCase09 152 - Index 5 out of bounds for length 4 - FAILED [TestNG-test-All Testcases-1]
+
+[INFO ] 2025-05-18 13:04:41.435 qkart.utility.ListenerClass 67 - ##### Test Cases Ended ##### [Test worker]
+
+[INFO ] 2025-05-18 13:06:33.447 qkart.utility.ListenerClass 60 - ##### Test Cases Started ##### [Test worker]
+
+[ERROR] 2025-05-18 13:06:55.624 qkart.utility.ListenerClass 83 - TestsB.java TestCase09 152 - Index 5 out of bounds for length 4 - FAILED [TestNG-test-All Testcases-1]
+
+[INFO ] 2025-05-18 13:06:55.800 qkart.utility.ListenerClass 68 - ##### Test Cases Ended ##### [Test worker]
+
+[INFO ] 2025-05-18 13:07:48.578 qkart.utility.ListenerClass 60 - ##### Test Cases Started ##### [Test worker]
+
+[ERROR] 2025-05-18 13:08:09.294 qkart.utility.ListenerClass 83 - TestsB.java TestCase09 152 - Index 5 out of bounds for length 4 - FAILED [TestNG-test-All Testcases-1]
+
+[INFO ] 2025-05-18 13:08:09.525 qkart.utility.ListenerClass 68 - ##### Test Cases Ended ##### [Test worker]
+
+[INFO ] 2025-05-18 13:10:11.785 qkart.utility.ListenerClass 63 - ##### Test Cases Started ##### [Test worker]
+
+[ERROR] 2025-05-18 13:10:29.335 qkart.utility.ListenerClass 86 - TestsB.java TestCase09 125 - expected [false] but found [true] - FAILED [TestNG-test-All Testcases-1]
+
+[INFO ] 2025-05-18 13:10:29.533 qkart.utility.ListenerClass 71 - ##### Test Cases Ended ##### [Test worker]
+
+[INFO ] 2025-05-18 13:11:25.165 qkart.utility.ListenerClass 63 - ##### Test Cases Started ##### [Test worker]
+
+[ERROR] 2025-05-18 13:11:42.572 qkart.utility.ListenerClass 86 - TestsB.java TestCase09 125 - User is unable to click Privacy Policy button expected [false] but found [true] - FAILED [TestNG-test-All Testcases-1]
+
+[INFO ] 2025-05-18 13:11:42.795 qkart.utility.ListenerClass 71 - ##### Test Cases Ended ##### [Test worker]

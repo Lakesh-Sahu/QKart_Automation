@@ -23,14 +23,15 @@ cart management, order placement, and payment — ensuring a reliable and seamle
 
 ## 🛠️ Tech Stack
 
-| **Component** | **Description**                                                                 |
-|---------------|---------------------------------------------------------------------------------|
-| **Selenium**  | Web automation tool for simulating user actions                                 |
-| **Java**      | Core programming language used to implement test logic and framework structure  |
-| **Gradle**    | Build automation and dependency management tool                                 |
-| **TestNG**    | Testing framework supporting assertions, grouping, reporting, and parallel runs |
-| **Log4j**     | Logging framework used to track and log execution details                       |
-| **POM**       | Page Object Model design pattern for scalable and maintainable test code        |
+| **Component**     | **Description**                                                                                                           |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------|
+| **Selenium**      | Web automation tool for simulating user actions                                                                           |
+| **Java**          | Core programming language used to implement test logic and framework structure                                            |
+| **Gradle**        | Build automation and dependency management tool                                                                           |
+| **TestNG**        | Testing framework supporting assertions, grouping, reporting, and parallel runs                                           |
+| **ExtentReports** | Reporting framework support the html report, test cases logs and results, attaching screenshots to the test case          |
+| **Log4j**         | Logging framework used to track and log execution details                                                                 |
+| **POM**           | Page Object Model design pattern for scalable and maintainable test code                                                  |
 
 ---
 
@@ -38,16 +39,16 @@ cart management, order placement, and payment — ensuring a reliable and seamle
 
 🔁 Parallel Test Execution
 - Supports parallel execution at both method and class levels.
-- Configurable via testng.xml:
+- Configurable via testng.xml.
 
 🌐 Cross-Browser Testing
 - Supports running tests on Chrome, Edge, Firefox, and Safari.
-- Set the desired browser in the testng.xml file:
+- Set the desired browser in the testng.xml file.
 
 📸 Screenshot on Failure
-- Automatically captures a screenshot when any test case fails.
+- Automatically captures a screenshot when any test case or step fails and attach the screenshot to that step in the Extent Report.
 - Useful for debugging and tracking test failures.
-- Screenshots are saved in the specified directory (e.g., screenshots/).
+- Extent Report and Screenshots are saved in the specified directory (e.g., extent_reports/).
 
 ---
 
@@ -60,6 +61,7 @@ QKart/
 │   │   ├── java/
 │   │   │   └── qkart/
 │   │   │       ├── pages/                   # Page Object classes
+│   │   │       │   ├── AboutUs.java
 │   │   │       │   ├── Checkout.java
 │   │   │       │   ├── Home.java
 │   │   │       │   ├── Login.java
@@ -68,15 +70,16 @@ QKart/
 │   │   │       │   ├── SearchResult.java
 │   │   │       │   ├── TermsOfService.java
 │   │   │       │   └── Thanks.java
-│   │   │       └── utility/                 # Utility and config classes
-│   │   │           ├── App.java
-│   │   │           ├── CommonMethods.java
-│   │   │           ├── ContextManager.java
-│   │   │           ├── DriverFactory.java
-│   │   │           ├── ListenerClass.java
-│   │   │           ├── ObjectContext.java
-│   │   │           ├── Screenshot.java
-│   │   │           └── Setup.java
+│   │   │       ├── utility/                 # Utility and config classes
+│   │   │       │    ├── Asserts.java
+│   │   │       │    ├── Base.java
+│   │   │       │    ├── CommonMethods.java
+│   │   │       │    ├── ContextManager.java
+│   │   │       │    ├── DriverFactory.java
+│   │   │       │    ├── ListenerClass.java
+│   │   │       │    ├── ObjectContext.java
+│   │   │       │    └── Screenshot.java   
+│   │   │       └── App.java
 │   │   └── resources/
 │   │       └── log4j2.properties            # Logging configuration
 │   └── test/
@@ -114,11 +117,15 @@ QKart/
    ./gradlew test --tests "qkart.testcases.TestClassName"
 
 📋 Test Configuration
-- TestNG configuration can be managed via the testng.xml file for grouping and suite execution.
+- TestNG configuration can be managed via the testng.xml file for grouping, method, class, package, suite, cross browser or parallel execution.
 
+📝 Report
+- Report is managed by ExtentReports and stored in the extent_reports/ directory.
+- Each assertion and page includes pass, fail, skip, warning information for troubleshooting and traceability.
+- 
 📝 Logs
 - Log output is managed by Log4j and stored in the logs/ directory.
-- Each page includes debug-level information for troubleshooting and traceability.
+- Each page includes error or debug-level information for troubleshooting and traceability.
 
 📌 Design Pattern
 - Follows Page Object Model (POM):

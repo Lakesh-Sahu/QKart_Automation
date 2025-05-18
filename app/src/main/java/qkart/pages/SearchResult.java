@@ -31,7 +31,8 @@ public class SearchResult extends Base {
         try {
             return cm.findElementFromParentByClassName(wait, parentElement, "css-yg30e6").getText();
         } catch (Exception e) {
-            log.error("{} Exception while getting title of product from parent result web element : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while getting title of product from parent result web element");
+            log.error("{} Exception while getting title of product from parent result web element : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return "";
         }
     }
@@ -44,7 +45,8 @@ public class SearchResult extends Base {
             Thread.sleep(3000);
             return status;
         } catch (Exception e) {
-            log.error("{} Exception while opening size chart from parent result web element: {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while opening size chart from parent result web element");
+            log.error("{} Exception while opening size chart from parent result web element : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -61,7 +63,8 @@ public class SearchResult extends Base {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("MuiDialog-paperScrollPaper")));
             return true;
         } catch (Exception e) {
-            log.error("{} Exception while closing size chart from parent result web element: {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while closing size chart from parent result web element");
+            log.error("{} Exception while closing size chart from parent result web element : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -72,7 +75,8 @@ public class SearchResult extends Base {
             WebElement element = cm.findElementFromParentByTagName(wait, parentElement, "button");
             return element.getText().trim().equalsIgnoreCase("SIZE CHART");
         } catch (Exception e) {
-            log.error("{} Exception while verifying size chart exists from parent result web element: {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while verifying size chart exists from parent result web element");
+            log.error("{} Exception while verifying size chart exists from parent result web element : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -111,7 +115,8 @@ public class SearchResult extends Base {
             }
             return true;
         } catch (Exception e) {
-            log.error("{} Exception while validating size chart content from parent result web element: {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while validating size chart content from parent result web element");
+            log.error("{} Exception while validating size chart content from parent result web element : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -121,7 +126,8 @@ public class SearchResult extends Base {
         try {
             return cm.findElementFromParentByClassName(wait, parentElement, "css-13sljp9") != null;
         } catch (Exception e) {
-            log.error("{} Exception while verifying size dropdown from parent result web element: {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while verifying size dropdown from parent result web element");
+            log.error("{} Exception while verifying size dropdown from parent result web element : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }

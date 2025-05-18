@@ -31,7 +31,8 @@ public class Checkout extends Base {
             driver.get(url);
             return true;
         } catch (Exception e) {
-            log.error("{} Exception while navigating to Checkout Page : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while navigating to Checkout Page");
+            log.error("{} Exception while navigating to Checkout Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -40,7 +41,8 @@ public class Checkout extends Base {
         try {
             return wait.until(ExpectedConditions.urlToBe(url));
         } catch (Exception e) {
-            log.error("{} Exception while verifying on Checkout Page : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while verifying on Checkout Page");
+            log.error("{} Exception while verifying on Checkout Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -60,7 +62,8 @@ public class Checkout extends Base {
 
             return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format("//*[@class='MuiTypography-root MuiTypography-body1 css-yg30e6' and text()='%s']", addresString)))) != null;
         } catch (Exception e) {
-            log.error("{} Exception while adding new address {} : {}", logCallerInfo(Thread.currentThread().getStackTrace()), addresString, cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while adding new address " + addresString);
+            log.error("{} Exception while adding new address {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), addresString, getMessageFromException(e));
             return false;
         }
     }
@@ -81,7 +84,8 @@ public class Checkout extends Base {
             }
             return false;
         } catch (Exception e) {
-            log.error("{} Exception while selecting address {} : {}", logCallerInfo(Thread.currentThread().getStackTrace()), addressToSelect, cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while selecting address " + addressToSelect);
+            log.error("{} Exception while selecting address {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), addressToSelect, getMessageFromException(e));
             return false;
         }
     }
@@ -92,7 +96,8 @@ public class Checkout extends Base {
             // Find the "PLACE ORDER" button and click on it
             return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='PLACE ORDER']"))));
         } catch (Exception e) {
-            log.error("{} Exception while clicking place order button : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while clicking place order button");
+            log.error("{} Exception while clicking place order button : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -104,7 +109,8 @@ public class Checkout extends Base {
             WebElement alertMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("notistack-snackbar")));
             return alertMessage.getText().trim().equals("You do not have enough balance in your wallet for this purchase");
         } catch (Exception e) {
-            log.error("{} Exception while verifying insufficient balance message : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while verifying insufficient balance message");
+            log.error("{} Exception while verifying insufficient balance message : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }

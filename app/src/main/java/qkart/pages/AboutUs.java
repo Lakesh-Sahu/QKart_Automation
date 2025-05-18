@@ -27,30 +27,23 @@ public class AboutUs extends Base {
         cm = new CommonMethods(this.driver);
     }
 
-    public boolean verifyOnThanksPage() {
+    public boolean verifyOnAboutUsPage() {
         try {
             return wait.until(ExpectedConditions.urlToBe(url));
         } catch (Exception e) {
-            log.error("{} Exception while verifying on Thanks Page : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while verifying on About Us Page");
+            log.error("{} Exception while verifying on About Us Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
 
-    public List<WebElement> getAdvertisementIFrame() {
+    public String getAboutUsHeadingText() {
         try {
-            return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//iframe")));
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/div/div[2]/h2"))).getText();
         } catch (Exception e) {
-            log.error("{} Exception while getting advertisement iframe : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
-            return new ArrayList<>();
-        }
-    }
-
-    public boolean clickBuyNowBtn() {
-        try {
-            return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Buy Now']"))));
-        } catch (Exception e) {
-            log.error("{} Exception while clicking Buy Now button : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
-            return false;
+            logWarningInExtentReport(e, "Exception while getting About Us Heading Text");
+            log.error("{} Exception while getting About Us Heading Text : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            return "";
         }
     }
 }

@@ -14,6 +14,7 @@ import org.openqa.selenium.safari.SafariOptions;
 import java.util.HashMap;
 import java.util.Map;
 
+// This class gives the required WebDriver according to the mentioned in the testng.xml file
 public class DriverFactory extends Base {
 
     public DriverFactory() {

@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="qkart.testcases.TestsB" tests="5" skipped="0" failures="1" errors="0" timestamp="2025-05-14T08:07:50" hostname="LAKESH-LAPTOP" time="88.564">
+<testsuite name="qkart.testcases.TestsB" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-05-18T07:41:25" hostname="LAKESH-LAPTOP" time="17.372">
   <properties/>
-  <testcase name="TestCase08[0](userTesterB, abc@123)" classname="qkart.testcases.TestsB" time="33.226"/>
-  <testcase name="TestCase10" classname="qkart.testcases.TestsB" time="6.008"/>
-  <testcase name="TestCase07[0](userTesterB, abc@123, Stylecon 9 Seater RHS Sofa Set, 10, Addr line 1 addr Line 2 addr line 3)" classname="qkart.testcases.TestsB" time="53.776"/>
-  <testcase name="TestCase11[0](userTesterB, abc@123)" classname="qkart.testcases.TestsB" time="40.524"/>
-  <testcase name="TestCase09[0](userTesterB, abc@123)" classname="qkart.testcases.TestsB" time="63.332">
-    <failure message="java.lang.AssertionError: Logged in successfully banner is still visible expected [true] but found [false]" type="java.lang.AssertionError">java.lang.AssertionError: Logged in successfully banner is still visible expected [true] but found [false]
+  <testcase name="TestCase09[0](userTesterB, abc@123)" classname="qkart.testcases.TestsB" time="17.372">
+    <failure message="java.lang.AssertionError: User is unable to click Privacy Policy button expected [false] but found [true]" type="java.lang.AssertionError">java.lang.AssertionError: User is unable to click Privacy Policy button expected [false] but found [true]
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1590)
-	at org.testng.Assert.assertTrue(Assert.java:57)
-	at qkart.testcases.TestsB.TestCase09(TestsB.java:124)
+	at org.testng.Assert.assertFalse(Assert.java:79)
+	at qkart.utility.Asserts.assertFalse(Asserts.java:123)
+	at qkart.testcases.TestsB.TestCase09(TestsB.java:125)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -29,20 +26,13 @@
 	at java.base/java.lang.Thread.run(Thread.java:1583)
 </failure>
   </testcase>
-  <system-out><![CDATA[
-[ERROR] 2025-05-14 13:37:48.445 qkart.pages.Register 62 - qkart.testcases.TestsA TestCase02 60 Exception while registering user with username userTesterA_17472100437358184 and password abc@123 and confirm password abc@123 : Expected condition failed: waiting for url to be "https://crio-qkart-frontend-qa.vercel.app/login". Current url: "https://crio-qkart-frontend-qa.vercel.app/register" (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-2]
+  <system-out><![CDATA[############## Assert Exception occurred : java.lang.AssertionErrorTestsB.java TestCase09 125 - User is unable to click Privacy Policy button expected [false] but found [true] - FAILED
 
-[ERROR] 2025-05-14 13:39:19.511 qkart.pages.Home 71 - qkart.testcases.TestsB TestCase09 124 Exception while waiting for invisibility of Logged in Successfully banner : Expected condition failed: waiting for element to no longer be visible: By.xpath: //div[text()='Logged in successfully'] (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-1]
-
-[ERROR] 2025-05-14 13:39:19.851 qkart.utility.ListenerClass 64 - TestsB.java TestCase09 124 - Logged in successfully banner is still visible expected [true] but found [false] - FAILED [TestNG-test-All Testcases-1]
+[ERROR] 2025-05-18 13:11:42.572 qkart.utility.ListenerClass 86 - TestsB.java TestCase09 125 - User is unable to click Privacy Policy button expected [false] but found [true] - FAILED [TestNG-test-All Testcases-1]
 ]]></system-out>
-  <system-err><![CDATA[May 14, 2025 1:38:25 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+  <system-err><![CDATA[May 18, 2025 1:11:26 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 136
-May 14, 2025 1:38:25 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 136.0.7103.93. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-May 14, 2025 1:38:32 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find CDP implementation matching 136
-May 14, 2025 1:38:32 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 136.0.7103.93. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+May 18, 2025 1:11:26 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 136.0.7103.114. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
 ]]></system-err>
 </testsuite>

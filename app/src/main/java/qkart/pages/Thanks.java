@@ -31,7 +31,8 @@ public class Thanks extends Base {
         try {
             return wait.until(ExpectedConditions.urlToBe(url));
         } catch (Exception e) {
-            log.error("{} Exception while verifying on Thanks Page : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while verifying on Thanks Page");
+            log.error("{} Exception while verifying on Thanks Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -40,7 +41,8 @@ public class Thanks extends Base {
         try {
             return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//iframe")));
         } catch (Exception e) {
-            log.error("{} Exception while getting advertisement iframe : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while getting advertisement iframe");
+            log.error("{} Exception while getting advertisement iframe : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return new ArrayList<>();
         }
     }
@@ -49,7 +51,8 @@ public class Thanks extends Base {
         try {
             return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Buy Now']"))));
         } catch (Exception e) {
-            log.error("{} Exception while clicking Buy Now button : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while clicking Buy Now button");
+            log.error("{} Exception while clicking Buy Now button : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }

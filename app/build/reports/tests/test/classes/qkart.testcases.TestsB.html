@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">5</div>
+<div class="counter">1</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">3m16.87s</div>
+<div class="counter">17.372s</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox failures" id="successRate">
-<div class="percent">80%</div>
+<div class="percent">0%</div>
 <p>successful</p>
 </div>
 </td>
@@ -79,11 +79,12 @@
 <a name="TestCase09[0](userTesterB, abc@123)"></a>
 <h3 class="failures">TestCase09[0](userTesterB, abc@123)</h3>
 <span class="code">
-<pre>java.lang.AssertionError: Logged in successfully banner is still visible expected [true] but found [false]
+<pre>java.lang.AssertionError: User is unable to click Privacy Policy button expected [false] but found [true]
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1590)
-	at org.testng.Assert.assertTrue(Assert.java:57)
-	at qkart.testcases.TestsB.TestCase09(TestsB.java:124)
+	at org.testng.Assert.assertFalse(Assert.java:79)
+	at qkart.utility.Asserts.assertFalse(Asserts.java:123)
+	at qkart.testcases.TestsB.TestCase09(TestsB.java:125)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -115,55 +116,28 @@
 </tr>
 </thead>
 <tr>
-<td class="success">TestCase07[0](userTesterB, abc@123, Stylecon 9 Seater RHS Sofa Set, 10, Addr line 1 addr Line 2 addr line 3)</td>
-<td class="success">53.776s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">TestCase08[0](userTesterB, abc@123)</td>
-<td class="success">33.226s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
 <td class="failures">TestCase09[0](userTesterB, abc@123)</td>
-<td class="failures">1m3.33s</td>
+<td class="failures">17.372s</td>
 <td class="failures">failed</td>
-</tr>
-<tr>
-<td class="success">TestCase10</td>
-<td class="success">6.008s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">TestCase11[0](userTesterB, abc@123)</td>
-<td class="success">40.524s</td>
-<td class="success">passed</td>
 </tr>
 </table>
 </div>
 <div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>
-[ERROR] 2025-05-14 13:37:48.445 qkart.pages.Register 62 - qkart.testcases.TestsA TestCase02 60 Exception while registering user with username userTesterA_17472100437358184 and password abc@123 and confirm password abc@123 : Expected condition failed: waiting for url to be &quot;https://crio-qkart-frontend-qa.vercel.app/login&quot;. Current url: &quot;https://crio-qkart-frontend-qa.vercel.app/register&quot; (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-2]
+<pre>############## Assert Exception occurred : java.lang.AssertionErrorTestsB.java TestCase09 125 - User is unable to click Privacy Policy button expected [false] but found [true] - FAILED
 
-[ERROR] 2025-05-14 13:39:19.511 qkart.pages.Home 71 - qkart.testcases.TestsB TestCase09 124 Exception while waiting for invisibility of Logged in Successfully banner : Expected condition failed: waiting for element to no longer be visible: By.xpath: //div[text()='Logged in successfully'] (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-1]
-
-[ERROR] 2025-05-14 13:39:19.851 qkart.utility.ListenerClass 64 - TestsB.java TestCase09 124 - Logged in successfully banner is still visible expected [true] but found [false] - FAILED [TestNG-test-All Testcases-1]
+[ERROR] 2025-05-18 13:11:42.572 qkart.utility.ListenerClass 86 - TestsB.java TestCase09 125 - User is unable to click Privacy Policy button expected [false] but found [true] - FAILED [TestNG-test-All Testcases-1]
 </pre>
 </span>
 </div>
 <div id="tab3" class="tab">
 <h2>Standard error</h2>
 <span class="code">
-<pre>May 14, 2025 1:38:25 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+<pre>May 18, 2025 1:11:26 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 136
-May 14, 2025 1:38:25 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 136.0.7103.93. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version (&quot;v86&quot;) matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-May 14, 2025 1:38:32 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find CDP implementation matching 136
-May 14, 2025 1:38:32 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 136.0.7103.93. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version (&quot;v86&quot;) matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+May 18, 2025 1:11:26 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 136.0.7103.114. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version (&quot;v86&quot;) matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
 </pre>
 </span>
 </div>
@@ -175,7 +149,7 @@ WARNING: Unable to find version of CDP to use for 136.0.7103.93. You may need to
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.12</a> at 14-May-2025, 1:39:20 pm</p>
+<a href="http://www.gradle.org">Gradle 8.12</a> at 18-May-2025, 1:11:43 pm</p>
 </div>
 </div>
 </body>

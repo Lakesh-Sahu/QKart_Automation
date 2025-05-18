@@ -19,6 +19,7 @@
 <!--        <groups>-->
 <!--            <run>-->
 <!--                <include name="Regression_Test" />-->
+<!--                <include name="T2" />-->
 <!--            </run>-->
 <!--        </groups>-->
         <packages>

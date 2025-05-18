@@ -29,7 +29,8 @@ public class PrivacyPolicy extends Base {
             driver.get(url);
             return true;
         } catch (Exception e) {
-            log.error("{} Exception while navigating to Privacy Policy : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while navigating to Privacy Policy");
+            log.error("{} Exception while navigating to Privacy Policy : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -38,7 +39,8 @@ public class PrivacyPolicy extends Base {
         try {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/div/div[2]/h2[text()='Privacy Policy']"))).getText();
         } catch (Exception e) {
-            log.error("{} Exception while getting Privacy Policy Heading Text : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while getting Privacy Policy Heading Text");
+            log.error("{} Exception while getting Privacy Policy Heading Text : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return "";
         }
     }

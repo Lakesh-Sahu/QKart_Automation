@@ -11,11 +11,9 @@ import static qkart.utility.Asserts.*;
 import java.util.Arrays;
 import java.util.List;
 
-//import static org.testng.Assert.*;
-
 public class TestsA extends Base {
 
-    @Test(alwaysRun = true, enabled = true, description = "Verify a new user can successfully register", priority = 1, groups = {"Sanity_test"})
+    @Test(enabled = true, description = "Verify a new user can successfully register", priority = 1, groups = {"Sanity_test"})
     @Parameters({"usernameA", "password"})
     public void TestCase01(String username, String password) {
 
@@ -196,7 +194,6 @@ public class TestsA extends Base {
         assertTrue(oc.login.verifyOnLoginPage(), "User is not redirected to login page");
         assertTrue(oc.login.performLogin(usernameDynamic, password), "User is unable to login with registered user credentials");
         assertTrue(oc.login.verifyUserLoggedIn(usernameDynamic), "Login successful but user is not logged in");
-
         assertTrue(oc.homePage.verifyOnHomePage(), "User is not redirected to home page");
         assertTrue(oc.homePage.searchForProduct(productName3), "User is unable to search for " + productName3);
         assertTrue(oc.homePage.addProductToCart(productName3), "User is unable to add product in cart for " + productName3);

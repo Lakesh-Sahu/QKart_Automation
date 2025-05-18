@@ -24,7 +24,8 @@ public class CommonMethods extends Base {
             Thread.sleep(1000);
             return true;
         } catch (Exception e) {
-            log.error("Exception while clicking : {}", getMessage(e));
+            logWarningInExtentReport(e, "Exception while clicking");
+            log.error("Exception while clicking : {}", getMessageFromException(e));
             return false;
         }
     }
@@ -37,7 +38,8 @@ public class CommonMethods extends Base {
             Thread.sleep(250);
             return true;
         } catch (Exception e) {
-            log.error("{} Exception while sending keys {} : {}", logCallerInfo(Thread.currentThread().getStackTrace()), keyToSend, getMessage(e));
+            logWarningInExtentReport(e, "Exception while sending keys " + keyToSend);
+            log.error("{} Exception while sending keys {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), keyToSend, getMessageFromException(e));
             return false;
         }
     }
@@ -46,7 +48,8 @@ public class CommonMethods extends Base {
         try {
             return driver.getCurrentUrl();
         } catch (Exception e) {
-            log.error("{} Exception while getting current url : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while getting current url");
+            log.error("{} Exception while getting current url : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return "";
         }
     }
@@ -61,7 +64,8 @@ public class CommonMethods extends Base {
             // Concatenate the timestamp to string to form unique timestamp
             return username + "_" + timestamp.getTime() + rmInt;
         } catch (Exception e) {
-            log.error("{} Exception while generating dynamic user name for username {} : {}", logCallerInfo(Thread.currentThread().getStackTrace()), username, getMessage(e));
+            logWarningInExtentReport(e, "Exception while generating dynamic user name for username " + username);
+            log.error("{} Exception while generating dynamic user name for username {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), username, getMessageFromException(e));
             return "";
         }
     }
@@ -70,16 +74,9 @@ public class CommonMethods extends Base {
         try {
             return s1.replaceAll(" ", "").equalsIgnoreCase(s2.replaceAll(" ", ""));
         } catch (Exception e) {
-            log.error("{} Exception while comparing two strings : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while comparing two strings");
+            log.error("{} Exception while comparing two strings : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
-        }
-    }
-
-    public String getMessage(Exception e) {
-        try {
-            return e.getMessage().split("\n")[0];
-        } catch (Exception i) {
-            return "";
         }
     }
 
@@ -88,7 +85,8 @@ public class CommonMethods extends Base {
             driver.navigate().back();
             return true;
         } catch (Exception e) {
-            log.error("{} Exception while navigating back : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while navigating back");
+            log.error("{} Exception while navigating back : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -98,7 +96,8 @@ public class CommonMethods extends Base {
             driver.close();
             return true;
         } catch (Exception e) {
-            log.error("{} Exception while closing window : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while closing window");
+            log.error("{} Exception while closing window : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -110,7 +109,8 @@ public class CommonMethods extends Base {
             try {
                 return child.isDisplayed() || child.isEnabled() ? child : null;
             } catch (Exception e) {
-                log.error("{} Exception while finding element from parent by xpath : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+                logWarningInExtentReport(e, "Exception while finding element from parent by xpath");
+                log.error("{} Exception while finding element from parent by xpath : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
                 return null;
             }
         });
@@ -122,7 +122,8 @@ public class CommonMethods extends Base {
             try {
                 return child.isDisplayed() || child.isEnabled() ? child : null;
             } catch (Exception e) {
-                log.error("{} Exception while finding element from parent by className : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+                logWarningInExtentReport(e, "Exception while finding element from parent by className");
+                log.error("{} Exception while finding element from parent by className : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
                 return null;
             }
         });
@@ -134,7 +135,8 @@ public class CommonMethods extends Base {
             try {
                 return child.isDisplayed() || child.isEnabled() ? child : null;
             } catch (Exception e) {
-                log.error("{} Exception while finding element from parent by tagName : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+                logWarningInExtentReport(e, "Exception while finding element from parent by tagName");
+                log.error("{} Exception while finding element from parent by tagName : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
                 return null;
             }
         });
@@ -148,7 +150,8 @@ public class CommonMethods extends Base {
                 return children.isEmpty() ? null : children;
             });
         } catch (Exception e) {
-            log.error("{} Exception while finding elements from parent by xpath : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while finding elements from parent by xpath");
+            log.error("{} Exception while finding elements from parent by xpath : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return null;
         }
     }
@@ -160,7 +163,8 @@ public class CommonMethods extends Base {
                 return children.isEmpty() ? null : children;
             });
         } catch (Exception e) {
-            log.error("{} Exception while finding elements from parent by className : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while finding elements from parent by className");
+            log.error("{} Exception while finding elements from parent by className : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return null;
         }
     }
@@ -172,7 +176,8 @@ public class CommonMethods extends Base {
                 return children.isEmpty() ? null : children;
             });
         } catch (Exception e) {
-            log.error("{} Exception while finding elements from parent by tagName : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while finding elements from parent by tagName");
+            log.error("{} Exception while finding elements from parent by tagName : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return null;
         }
     }
@@ -181,7 +186,8 @@ public class CommonMethods extends Base {
         try {
             return driver.getWindowHandle();
         } catch (Exception e) {
-            log.error("{} Exception while getting window handle : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while getting window handle");
+            log.error("{} Exception while getting window handle : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return "";
         }
     }
@@ -190,7 +196,8 @@ public class CommonMethods extends Base {
         try {
             return driver.getWindowHandles();
         } catch (Exception e) {
-            log.error("{} Exception while getting window handles : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while getting window handles");
+            log.error("{} Exception while getting window handles : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return new HashSet<>();
         }
     }
@@ -199,7 +206,8 @@ public class CommonMethods extends Base {
         try {
             return driver.switchTo().window(windowHandel) != null;
         } catch (Exception e) {
-            log.error("{} Exception while switching window : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while switching window");
+            log.error("{} Exception while switching window : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -209,7 +217,8 @@ public class CommonMethods extends Base {
             driver.switchTo().window(windowHandel).close();
             return true;
         } catch (Exception e) {
-            log.error("{} Exception while switching and closing window : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while switching and closing window");
+            log.error("{} Exception while switching and closing window : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -218,7 +227,8 @@ public class CommonMethods extends Base {
         try {
             return driver.switchTo().frame(iframeIndex) != null;
         } catch (Exception e) {
-            log.error("{} Exception while switching to iframe by index : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while switching to iframe by index");
+            log.error("{} Exception while switching to iframe by index : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -227,7 +237,8 @@ public class CommonMethods extends Base {
         try {
             return driver.switchTo().frame(nameOrId) != null;
         } catch (Exception e) {
-            log.error("{} Exception while switching to iframe by name or id : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while switching to iframe by name or id");
+            log.error("{} Exception while switching to iframe by name or id : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -236,7 +247,8 @@ public class CommonMethods extends Base {
         try {
             return driver.switchTo().frame(iframeWebElement) != null;
         } catch (Exception e) {
-            log.error("{} Exception while switching to iframe by iframe web element : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while switching to iframe by iframe web element");
+            log.error("{} Exception while switching to iframe by iframe web element : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -245,7 +257,8 @@ public class CommonMethods extends Base {
         try {
             return driver.switchTo().parentFrame() != null;
         } catch (Exception e) {
-            log.error("{} Exception while switching to parent frame of iframe : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while switching to parent frame of iframe");
+            log.error("{} Exception while switching to parent frame of iframe : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return true;
         }
     }
@@ -254,7 +267,8 @@ public class CommonMethods extends Base {
         try {
             return driver.switchTo().defaultContent() != null;
         } catch (Exception e) {
-            log.error("{} Exception while switching to default content of iframe : {}", logCallerInfo(Thread.currentThread().getStackTrace()), getMessage(e));
+            logWarningInExtentReport(e, "Exception while switching to default content of iframe");
+            log.error("{} Exception while switching to default content of iframe : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return true;
         }
     }

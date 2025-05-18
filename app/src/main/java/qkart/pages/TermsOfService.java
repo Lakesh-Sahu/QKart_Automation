@@ -29,7 +29,8 @@ public class TermsOfService extends Base {
             driver.get(url);
             return true;
         } catch (Exception e) {
-            log.error("{} Exception while navigating to Terms of Service Page : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while navigating to Terms of Service Page");
+            log.error("{} Exception while navigating to Terms of Service Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -38,7 +39,8 @@ public class TermsOfService extends Base {
         try {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/div/div[2]/h2"))).getText();
         } catch (Exception e) {
-            log.error("{} Exception while getting Terms of Service Heading Text : {}", logCallerInfo(Thread.currentThread().getStackTrace()), cm.getMessage(e));
+            logWarningInExtentReport(e, "Exception while getting Terms of Service Heading Text");
+            log.error("{} Exception while getting Terms of Service Heading Text : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return "";
         }
     }
