@@ -1,5 +1,6 @@
 package qkart.pages;
 
+import org.apache.logging.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,7 +32,7 @@ public class Register extends Base {
             return true;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while navigating to Register Page");
-            log.error("{} Exception while navigating to Register Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while navigating to Register Page", e, Level.WARN);
             return false;
         }
     }
@@ -41,7 +42,7 @@ public class Register extends Base {
             return driver.getCurrentUrl().equals(url);
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while verifying on Register Page");
-            log.error("{} Exception while verifying on Register Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while verifying on Register Page", e, Level.WARN);
             return false;
         }
     }
@@ -62,7 +63,7 @@ public class Register extends Base {
             return status && wait.until(ExpectedConditions.urlToBe("https://crio-qkart-qa.vercel.app/login"));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while registering user with username " + usernameToEnter + " and password " + passwordToEnter + " and confirm password " + confirmPassword);
-            log.error("{} Exception while registering user with username {} and password {} and confirm password {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), usernameToEnter, passwordToEnter, confirmPassword, getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while registering user with username " + usernameToEnter + " and password " + passwordToEnter + " and confirm password " + confirmPassword, e, Level.WARN);
             return false;
         }
     }

@@ -1,5 +1,6 @@
 package qkart.pages;
 
+import org.apache.logging.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,7 +32,7 @@ public class Login extends Base {
             return true;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while navigating to Login Page");
-            log.error("{} Exception while navigating to Login Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while navigating to Login Page", e, Level.WARN);
             return false;
         }
     }
@@ -41,7 +42,7 @@ public class Login extends Base {
             return wait.until(ExpectedConditions.urlToBe(url));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while verifying on Login Page");
-            log.error("{} Exception while verifying on Login Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while verifying on Login Page", e, Level.WARN);
             return false;
         }
     }
@@ -62,7 +63,7 @@ public class Login extends Base {
             return status && verifyUserLoggedIn(username);
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while performing Login with username " + username + " and password " + password);
-            log.error("{} Exception while performing Login with username {} and password {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), username, password, getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while performing Login with username " + username + " and password " + password, e, Level.WARN);
             return false;
         }
     }
@@ -78,7 +79,7 @@ public class Login extends Base {
             return cm.compareString(username_label.getText(), username) && logoutBtn != null;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while verifying user is Logged in for username " + username);
-            log.error("{} Exception while verifying user is Logged in for username {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), username, getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while verifying user is Logged in for username " + username, e, Level.WARN);
             return false;
         }
     }

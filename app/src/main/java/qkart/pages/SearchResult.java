@@ -1,5 +1,6 @@
 package qkart.pages;
 
+import org.apache.logging.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -32,7 +33,7 @@ public class SearchResult extends Base {
             return cm.findElementFromParentByClassName(wait, parentElement, "css-yg30e6").getText();
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while getting title of product from parent result web element");
-            log.error("{} Exception while getting title of product from parent result web element : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while getting title of product from parent result web element", e, Level.WARN);
             return "";
         }
     }
@@ -46,7 +47,7 @@ public class SearchResult extends Base {
             return status;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while opening size chart from parent result web element");
-            log.error("{} Exception while opening size chart from parent result web element : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while opening size chart from parent result web element", e, Level.WARN);
             return false;
         }
     }
@@ -64,7 +65,7 @@ public class SearchResult extends Base {
             return true;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while closing size chart from parent result web element");
-            log.error("{} Exception while closing size chart from parent result web element : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while closing size chart from parent result web element", e, Level.WARN);
             return false;
         }
     }
@@ -76,7 +77,7 @@ public class SearchResult extends Base {
             return element.getText().trim().equalsIgnoreCase("SIZE CHART");
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while verifying size chart exists from parent result web element");
-            log.error("{} Exception while verifying size chart exists from parent result web element : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while verifying size chart exists from parent result web element", e, Level.WARN);
             return false;
         }
     }
@@ -116,7 +117,7 @@ public class SearchResult extends Base {
             return true;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while validating size chart content from parent result web element");
-            log.error("{} Exception while validating size chart content from parent result web element : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while validating size chart content from parent result web element", e, Level.WARN);
             return false;
         }
     }
@@ -127,7 +128,7 @@ public class SearchResult extends Base {
             return cm.findElementFromParentByClassName(wait, parentElement, "css-13sljp9") != null;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while verifying size dropdown from parent result web element");
-            log.error("{} Exception while verifying size dropdown from parent result web element : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while verifying size dropdown from parent result web element", e, Level.WARN);
             return false;
         }
     }

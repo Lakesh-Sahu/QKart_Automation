@@ -1,19 +1,20 @@
 package qkart.utility;
 
 import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.*;
 
 import java.io.File;
+import java.util.Arrays;
 
 public class Base {
 
-    protected Logger log = LogManager.getLogger(getClass());
+    protected static Logger log = LogManager.getLogger(Base.class);
     protected static String browserName;
 
     protected static ExtentSparkReporter sparkReporter;
@@ -54,20 +55,29 @@ public class Base {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        if (ContextManager.getContext() != null && ContextManager.getContext().getDriver() != null) {
-            ContextManager.getContext().getDriver().quit();
-            ContextManager.remove();
+        try {
+            if (ContextManager.getContext() != null && ContextManager.getContext().getDriver() != null) {
+                ContextManager.getContext().getDriver().quit();
+                ContextManager.remove();
+            }
+        } catch (Exception e) {
+            logWarningInExtentReport(e, "Unable to tearDown");
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Unable to tearDown", e, Level.WARN);
         }
     }
 
     @AfterSuite(alwaysRun = true)
     public void flushReport() {
-        reports.flush();
+        try {
+            reports.flush();
+        } catch (Exception e) {
+            logWarningInExtentReport(e, "Unable to flush the extent report");
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Unable to flush the extent report", e, Level.WARN);
+        }
     }
 
-
     // Used to get the class, method name, and line number from which any other method is called, used for logging
-    public static String getCallerInfo(StackTraceElement[] stackTraceArr) {
+    public static String getCallerInfoFromStackTrace(StackTraceElement[] stackTraceArr) {
         try {
             // Index 0 = getStackTrace, 1 = logCallerInfo, 2 = actual caller
             StackTraceElement caller = stackTraceArr[2];
@@ -78,6 +88,8 @@ public class Base {
 
             return (callerClassName + " " + callerMethodName + " " + callerLine);
         } catch (Exception e) {
+            logWarningInExtentReport(e, "Unable to get the caller info from StackTraceElement[]");
+            logExceptionInLog(Arrays.toString(e.getStackTrace()), "Unable to get the caller info from StackTraceElement[]", e, Level.WARN);
             return "";
         }
     }
@@ -94,35 +106,90 @@ public class Base {
 
             return (callerClassName + " " + callerMethodName + " " + callerLine);
         } catch (Exception e) {
+            logWarningInExtentReport(e, "Unable to get the caller info from StackTraceElement[]");
+            logExceptionInLog(Arrays.toString(e.getStackTrace()), "Unable to tearDown", e, Level.WARN);
             return "";
         }
     }
 
     public static void logWarningInExtentReport(Exception e, String message) {
-        ExtentTest test = ContextManager.getContext().test;
+        try {
+            ObjectContext oc = ContextManager.getContext();
+            String className = oc.getClassName();
+            StringBuilder sb = new StringBuilder();
+            StackTraceElement parent = null;
 
-        StackTraceElement stackTraceElementCurrent = e.getStackTrace()[2];
-        StackTraceElement stackTraceElementParent = e.getStackTrace()[3];
-        String callerInfo = stackTraceElementCurrent.getClassName() + " " + stackTraceElementCurrent.getMethodName() + " " + stackTraceElementCurrent.getLineNumber() + " " + stackTraceElementParent.getClassName() + " " + stackTraceElementParent.getMethodName() + " " + stackTraceElementParent.getLineNumber();
+            for (StackTraceElement current : e.getStackTrace()) {
+                if (current.getClassName().equals(className)) {
+                    sb.append(current.getClassName()).append(" ").append(current.getMethodName()).append(" ").append(current.getLineNumber());
+                    break;
+                }
+                parent = current;
+            }
+            if (parent != null) {
+                sb.insert(0, " ").insert(0, parent.getLineNumber()).insert(0, " ").insert(0, parent.getMethodName()).insert(0, " ").insert(0, parent.getClassName());
+            }
+            String callerInfo = sb.toString();
+            sb.append(" ").append(message).append(" : ").append(getMessageFromException(e)).append(" - WARNING");
+            ContextManager.getContext().test.warning(sb.toString(), MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo + " - WARN")).build());
 
-        ContextManager.getContext().test.warning(callerInfo + " " + message + " : " + getMessageFromException(e), MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo)).build());
+        } catch (Exception ei) {
+            String callerInfo = getCallerInfoFromStackTrace(ei.getStackTrace());
+            ContextManager.getContext().test.warning("Unable to log warning in extent report", MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo + " - WARN")).build());
+            logExceptionInLog(Arrays.toString(e.getStackTrace()), "Unable to log warning in extent report", e, Level.WARN);
+        }
     }
+//    public static void logWarningInExtentReport(Exception e, String message, int index) {
+//        StackTraceElement stackTraceElementCurrent = e.getStackTrace()[index];
+//        StackTraceElement stackTraceElementParent = e.getStackTrace()[index + 1];
+//        String callerInfo = stackTraceElementCurrent.getClassName() + " " + stackTraceElementCurrent.getMethodName() + " " + stackTraceElementCurrent.getLineNumber() + " " + stackTraceElementParent.getClassName() + " " + stackTraceElementParent.getMethodName() + " " + stackTraceElementParent.getLineNumber();
+//
+//        ContextManager.getContext().test.warning(callerInfo + " " + message + " : " + getMessageFromException(e), MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo)).build());
+//    }
 
-    public static void logWarningInExtentReport(Exception e, String message, int index) {
-        ExtentTest test = ContextManager.getContext().test;
-
-        StackTraceElement stackTraceElementCurrent = e.getStackTrace()[index];
-        StackTraceElement stackTraceElementParent = e.getStackTrace()[index + 1];
-        String callerInfo = stackTraceElementCurrent.getClassName() + " " + stackTraceElementCurrent.getMethodName() + " " + stackTraceElementCurrent.getLineNumber() + " " + stackTraceElementParent.getClassName() + " " + stackTraceElementParent.getMethodName() + " " + stackTraceElementParent.getLineNumber();
-
-        ContextManager.getContext().test.warning(callerInfo + " " + message + " : " + getMessageFromException(e), MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo)).build());
-    }
-
-    public static String getMessageFromException(Exception e) {
+    public static String getMessageFromException(Throwable e) {
         try {
             return e.getMessage().split("\n")[0];
         } catch (Exception i) {
             return "";
+        }
+    }
+
+//    // log the result of test case if it is FAILED or SKIPPED
+//    public static void logExceptionInLog(Exception e, Level level, String status) {
+//        try {
+//            String className = e.getTestClass().getName();
+//            String methodName = result.getName();
+//            StringBuilder sb = new StringBuilder(className + " " + methodName);
+//            StackTraceElement parent = null;
+//            Throwable th = result.getThrowable();
+//            if (th != null) {
+//                for (StackTraceElement current : th.getStackTrace()) {
+//                    if (current.getClassName().equals(className)) {
+//                        sb.append(" ").append(current.getLineNumber()).append(" ").append(" : ").append(getMessageFromException(th));
+//                        break;
+//                    }
+//                    parent = current;
+//                }
+//                if (parent != null) {
+//                    sb.insert(0, " ").insert(0, parent.getLineNumber()).insert(0, " ").insert(0, parent.getMethodName()).insert(0, " ").insert(0, parent.getClassName());
+//                }
+//            }
+//            sb.append(" - ").append(status);
+//
+//            log.log(level, sb.toString());
+//        } catch (Exception e) {
+//            log.warn("Could not write test log for {} {}", result.getTestClass().getName(), result.getName(), e.getMessage().split("\n")[0]);
+//        }
+//    }
+
+    // log the result of test case if it is FAILED or SKIPPED
+    public static void logExceptionInLog(String callerInfo, String message, Exception e, Level level) {
+        try {
+            StringBuilder sb = new StringBuilder();
+            log.log(level, sb.append(callerInfo).append(" : ").append(message).append(" : ").append(getMessageFromException(e)).toString());
+        } catch (Exception ei) {
+            log.warn("Could not write test log for {} : {}", callerInfo, ei.getMessage().split("\n")[0]);
         }
     }
 }

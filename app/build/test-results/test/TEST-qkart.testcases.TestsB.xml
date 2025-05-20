@@ -1,38 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="qkart.testcases.TestsB" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-05-18T07:41:25" hostname="LAKESH-LAPTOP" time="17.372">
+<testsuite name="qkart.testcases.TestsB" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-05-20T20:28:26" hostname="LAKESH-LAPTOP" time="80.722">
   <properties/>
-  <testcase name="TestCase09[0](userTesterB, abc@123)" classname="qkart.testcases.TestsB" time="17.372">
-    <failure message="java.lang.AssertionError: User is unable to click Privacy Policy button expected [false] but found [true]" type="java.lang.AssertionError">java.lang.AssertionError: User is unable to click Privacy Policy button expected [false] but found [true]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1590)
-	at org.testng.Assert.assertFalse(Assert.java:79)
-	at qkart.utility.Asserts.assertFalse(Asserts.java:123)
-	at qkart.testcases.TestsB.TestCase09(TestsB.java:125)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
-	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-</failure>
-  </testcase>
-  <system-out><![CDATA[############## Assert Exception occurred : java.lang.AssertionErrorTestsB.java TestCase09 125 - User is unable to click Privacy Policy button expected [false] but found [true] - FAILED
-
-[ERROR] 2025-05-18 13:11:42.572 qkart.utility.ListenerClass 86 - TestsB.java TestCase09 125 - User is unable to click Privacy Policy button expected [false] but found [true] - FAILED [TestNG-test-All Testcases-1]
-]]></system-out>
-  <system-err><![CDATA[May 18, 2025 1:11:26 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+  <testcase name="TestCase08[0](userTesterB, abc@123)" classname="qkart.testcases.TestsB" time="32.347"/>
+  <testcase name="TestCase10" classname="qkart.testcases.TestsB" time="8.173"/>
+  <testcase name="TestCase09[0](userTesterB, abc@123)" classname="qkart.testcases.TestsB" time="22.46"/>
+  <testcase name="TestCase07[0](userTesterB, abc@123, Stylecon 9 Seater RHS Sofa Set, 10, Addr line 1 addr Line 2 addr line 3)" classname="qkart.testcases.TestsB" time="55.14"/>
+  <testcase name="TestCase11[0](userTesterB, abc@123)" classname="qkart.testcases.TestsB" time="39.226"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[May 21, 2025 1:58:26 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 136
-May 18, 2025 1:11:26 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+May 21, 2025 1:58:26 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 136.0.7103.114. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+May 21, 2025 1:58:27 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 21, 2025 1:58:27 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 136.0.7103.114. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+May 21, 2025 1:58:47 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 21, 2025 1:58:47 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 136.0.7103.114. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+May 21, 2025 1:59:00 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 21, 2025 1:59:00 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 136.0.7103.114. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+May 21, 2025 1:59:08 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 21, 2025 1:59:08 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 136.0.7103.114. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
 ]]></system-err>
 </testsuite>

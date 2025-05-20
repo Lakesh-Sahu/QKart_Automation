@@ -3,7 +3,7 @@
 <suite name="Test case suite for QKart" verbose="0" parallel="methods" thread-count="4">
     <parameter name="browser" value="Chrome" />
     <listeners>
-        <listener class-name="qkart.utility.ListenerClass"/>
+        <listener class-name="qkart.utility.Listener"/>
     </listeners>
     <test name="All Testcases">
         <parameter name="usernameA" value="userTesterA"/>
@@ -16,12 +16,12 @@
         <parameter name="productName4" value="Yarine Floor Lamp"/>
         <parameter name="productName5" value="Stylecon 9 Seater RHS Sofa Set"/>
         <parameter name="quantity" value="10"/>
-        <groups>
-            <run>
+<!--        <groups>-->
+<!--            <run>-->
 <!--                <include name="Regression_Test" />-->
-                <include name="T2" />
-            </run>
-        </groups>
+<!--                <include name="T3" />-->
+<!--            </run>-->
+<!--        </groups>-->
         <packages>
             <package name="qkart.testcases">
             </package>

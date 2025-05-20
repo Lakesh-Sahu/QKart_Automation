@@ -1,5 +1,6 @@
 package qkart.pages;
 
+import org.apache.logging.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,7 +31,7 @@ public class PrivacyPolicy extends Base {
             return true;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while navigating to Privacy Policy");
-            log.error("{} Exception while navigating to Privacy Policy : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while navigating to Privacy Policy", e, Level.WARN);
             return false;
         }
     }
@@ -40,7 +41,7 @@ public class PrivacyPolicy extends Base {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/div/div[2]/h2[text()='Privacy Policy']"))).getText();
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while getting Privacy Policy Heading Text");
-            log.error("{} Exception while getting Privacy Policy Heading Text : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while getting Privacy Policy Heading Text", e, Level.WARN);
             return "";
         }
     }

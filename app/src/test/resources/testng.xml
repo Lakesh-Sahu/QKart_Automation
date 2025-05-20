@@ -3,7 +3,7 @@
 <suite name="Test case suite for QKart" verbose="0" parallel="methods" thread-count="4">
     <parameter name="browser" value="Chrome" />
     <listeners>
-        <listener class-name="qkart.utility.ListenerClass"/>
+        <listener class-name="qkart.utility.Listener"/>
     </listeners>
     <test name="All Testcases">
         <parameter name="usernameA" value="userTesterA"/>
@@ -19,7 +19,7 @@
 <!--        <groups>-->
 <!--            <run>-->
 <!--                <include name="Regression_Test" />-->
-<!--                <include name="T2" />-->
+<!--                <include name="T3" />-->
 <!--            </run>-->
 <!--        </groups>-->
         <packages>

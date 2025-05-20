@@ -1,5 +1,6 @@
 package qkart.pages;
 
+import org.apache.logging.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,7 +33,7 @@ public class Checkout extends Base {
             return true;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while navigating to Checkout Page");
-            log.error("{} Exception while navigating to Checkout Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while navigating to Checkout Page", e, Level.WARN);
             return false;
         }
     }
@@ -42,7 +43,7 @@ public class Checkout extends Base {
             return wait.until(ExpectedConditions.urlToBe(url));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while verifying on Checkout Page");
-            log.error("{} Exception while verifying on Checkout Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while verifying on Checkout Page", e, Level.WARN);
             return false;
         }
     }
@@ -63,7 +64,7 @@ public class Checkout extends Base {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format("//*[@class='MuiTypography-root MuiTypography-body1 css-yg30e6' and text()='%s']", addresString)))) != null;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while adding new address " + addresString);
-            log.error("{} Exception while adding new address {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), addresString, getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while adding new address", e, Level.WARN);
             return false;
         }
     }
@@ -85,7 +86,7 @@ public class Checkout extends Base {
             return false;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while selecting address " + addressToSelect);
-            log.error("{} Exception while selecting address {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), addressToSelect, getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while selecting address", e, Level.WARN);
             return false;
         }
     }
@@ -97,7 +98,7 @@ public class Checkout extends Base {
             return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='PLACE ORDER']"))));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while clicking place order button");
-            log.error("{} Exception while clicking place order button : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while clicking place order button", e, Level.WARN);
             return false;
         }
     }
@@ -110,7 +111,7 @@ public class Checkout extends Base {
             return alertMessage.getText().trim().equals("You do not have enough balance in your wallet for this purchase");
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while verifying insufficient balance message");
-            log.error("{} Exception while verifying insufficient balance message : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while verifying insufficient balance message", e, Level.WARN);
             return false;
         }
     }

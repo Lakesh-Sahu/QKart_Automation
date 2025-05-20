@@ -1,0 +1,148 @@
+import com.aventstack.extentreports.MediaEntityBuilder;
+import org.testng.Assert;
+
+public class D Asser extends Base {
+
+    public static void assertEquals(Object actual, Object expected, String message) {
+        try {
+            Assert.assertEquals(actual, expected);
+        } catch (AssertionError e) {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace());
+            testFail(message);
+            throw e;
+        }
+    }
+
+    public static void assertEquals(String actual, String expected, String message) {
+        try {
+            Assert.assertEquals(actual, expected);
+        } catch (AssertionError e) {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace());
+            testFail(message);
+            throw e;
+        }
+    }
+
+    public static void assertEquals(int actual, int expected, String message) {
+        try {
+            Assert.assertEquals(actual, expected);
+        } catch (AssertionError e) {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace());
+            testFail(message);
+            throw e;
+        }
+    }
+
+
+    public static void assertNotEquals(Object actual, Object expected, String message) {
+        try {
+            Assert.assertNotEquals(actual, expected);
+        } catch (AssertionError e) {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace());
+            testFail(message);
+            throw e;
+        }
+    }
+
+    public static void assertNotEquals(String actual, String expected, String message) {
+        try {
+            Assert.assertNotEquals(actual, expected);
+        } catch (AssertionError e) {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace());
+            testFail(message);
+            throw e;
+        }
+    }
+
+    public static void assertNotEquals(int actual, int expected, String message) {
+        try {
+            Assert.assertNotEquals(actual, expected);
+        } catch (AssertionError e) {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace());
+            testFail(message);
+            throw e;
+        }
+    }
+
+
+    public static void assertNotNull(Object actual, String message) {
+        try {
+            Assert.assertNotNull(actual);
+        } catch (AssertionError e) {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace());
+            testFail(message);
+            throw e;
+        }
+    }
+
+    public static void assertNotNull(String actual, String message) {
+        try {
+            Assert.assertNotNull(actual);
+        } catch (AssertionError e) {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace());
+            testFail(message);
+            throw e;
+        }
+    }
+
+    public static void assertTrue(Boolean actual, String message) {
+        try {
+            Assert.assertTrue(actual);
+        } catch (AssertionError e) {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace());
+            testFail(message);
+            throw e;
+        }
+    }
+
+    public static void assertTrue(boolean actual, String message) {
+        try {
+            Assert.assertTrue(actual);
+        } catch (AssertionError e) {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace());
+            testFail(message);
+            throw e;
+        }
+    }
+
+
+    public static void assertFalse(Boolean actual, String message) {
+        try {
+            Assert.assertFalse(actual);
+        } catch (AssertionError e) {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace());
+            testFail(message);
+            throw e;
+        }
+    }
+
+    public static void assertFalse(boolean actual, String message) {
+        try {
+            Assert.assertFalse(actual, message);
+        } catch (AssertionError e) {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace());
+            testFail(message);
+            throw e;
+        }
+    }
+
+    public static void testFail(String message) {
+        try {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace(), 3);
+
+            ContextManager.getContext().test.fail(callerInfo + " " + message, MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo)).build());
+        } catch (Exception e) {
+            System.out.println("##### Unable to call the getCallerInfo or unable to capture the screenshot for the extent report for following message #####" + "\n" + message);
+        }
+    }
+
+    public static void testSkip() {
+        try {
+            String callerInfo = getCallerInfo(Thread.currentThread().getStackTrace(), 3);
+
+            ContextManager.getContext().test.skip(callerInfo);
+        } catch (Exception e) {
+            System.out.println("##### Unable to call the getCallerInfo for the extent report #####");
+        }
+    }
+}

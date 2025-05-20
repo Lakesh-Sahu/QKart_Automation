@@ -1,5 +1,6 @@
 package qkart.pages;
 
+import org.apache.logging.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,7 +33,7 @@ public class AboutUs extends Base {
             return wait.until(ExpectedConditions.urlToBe(url));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while verifying on About Us Page");
-            log.error("{} Exception while verifying on About Us Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while verifying on About Us Page", e, Level.WARN);
             return false;
         }
     }
@@ -42,7 +43,7 @@ public class AboutUs extends Base {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']/div/div[2]/h2"))).getText();
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while getting About Us Heading Text");
-            log.error("{} Exception while getting About Us Heading Text : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while getting About Us Heading Text", e, Level.WARN);
             return "";
         }
     }

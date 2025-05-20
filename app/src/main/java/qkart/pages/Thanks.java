@@ -1,5 +1,6 @@
 package qkart.pages;
 
+import org.apache.logging.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,7 +33,7 @@ public class Thanks extends Base {
             return wait.until(ExpectedConditions.urlToBe(url));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while verifying on Thanks Page");
-            log.error("{} Exception while verifying on Thanks Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while verifying on Thanks Page", e, Level.WARN);
             return false;
         }
     }
@@ -42,7 +43,7 @@ public class Thanks extends Base {
             return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//iframe")));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while getting advertisement iframe");
-            log.error("{} Exception while getting advertisement iframe : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while getting advertisement iframe", e, Level.WARN);
             return new ArrayList<>();
         }
     }
@@ -52,7 +53,7 @@ public class Thanks extends Base {
             return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Buy Now']"))));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while clicking Buy Now button");
-            log.error("{} Exception while clicking Buy Now button : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while clicking Buy Now button", e, Level.WARN);
             return false;
         }
     }

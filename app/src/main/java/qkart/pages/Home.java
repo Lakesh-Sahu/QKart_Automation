@@ -1,5 +1,6 @@
 package qkart.pages;
 
+import org.apache.logging.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,7 +32,7 @@ public class Home extends Base {
             return wait.until(ExpectedConditions.urlToBe(url));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while verifying on Home Page");
-            log.error("{} Exception while verifying on Home Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while verifying on Home Page", e, Level.WARN);
             return false;
         }
     }
@@ -43,7 +44,7 @@ public class Home extends Base {
             return true;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while navigating to Home Page");
-            log.error("{} Exception while navigating to Home Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while navigating to Home Page", e, Level.WARN);
             return false;
         }
     }
@@ -53,7 +54,7 @@ public class Home extends Base {
             return url;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while getting Home Page url");
-            log.error("{} Exception while getting Home Page url : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while getting Home Page url", e, Level.WARN);
             return "";
         }
     }
@@ -63,7 +64,7 @@ public class Home extends Base {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Logged in successfully']"))) != null;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while waiting for visibility of Logged in Successfully banner");
-            log.error("{} Exception while waiting for visibility of Logged in Successfully banner : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while waiting for visibility of Logged in Successfully banner", e, Level.WARN);
             return false;
         }
     }
@@ -73,7 +74,7 @@ public class Home extends Base {
             return wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[text()='Logged in successfully']")));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while waiting for invisibility of Logged in Successfully banner");
-            log.error("{} Exception while waiting for invisibility of Logged in Successfully banner : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while waiting for invisibility of Logged in Successfully banner", e, Level.WARN);
             return false;
         }
     }
@@ -88,7 +89,7 @@ public class Home extends Base {
             return status && wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//button[text()='Logout']")));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while performing logout from hHome Page");
-            log.error("{} Exception while performing logout from hHome Page : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while performing logout from hHome Page", e, Level.WARN);
             return false;
         }
     }
@@ -111,7 +112,7 @@ public class Home extends Base {
             return productOrNoProductFoundStatus;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while searching for product " + product);
-            log.error("{} Exception while searching for product {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), product, getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while searching for product", e, Level.WARN);
             return false;
         }
     }
@@ -122,7 +123,7 @@ public class Home extends Base {
             return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("css-sycj1h")));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while getting search results");
-            log.error("{} Exception while getting search results : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while getting search results", e, Level.WARN);
             return new ArrayList<>();
         }
     }
@@ -133,7 +134,7 @@ public class Home extends Base {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='root']//h4[contains(text(),'No products found')]"))) != null;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while waiting for no result found");
-            log.error("{} Exception while waiting for no result found : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while waiting for no result found", e, Level.WARN);
             return false;
         }
     }
@@ -155,7 +156,7 @@ public class Home extends Base {
             return false;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while adding product " + productName + " to cart");
-            log.error("{} Exception while adding product {} to cart : {}", getCallerInfo(Thread.currentThread().getStackTrace()), productName, getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while adding product " + productName + " to cart", e, Level.WARN);
             return false;
         }
     }
@@ -166,7 +167,7 @@ public class Home extends Base {
             return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("checkout-btn"))));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while clicking checkout button");
-            log.error("{} Exception while clicking checkout button : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while clicking checkout button", e, Level.WARN);
             return false;
         }
     }
@@ -220,7 +221,7 @@ public class Home extends Base {
             return false;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while changing product " + productName + " quantity " + quantity);
-            log.error("{} Exception while changing product {} quantity {} : {}", getCallerInfo(Thread.currentThread().getStackTrace()), productName, quantity, e.getCause());
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while changing product " + productName + " quantity " + quantity, e, Level.WARN);
 
             // If required quantity is 0 or less than 0 then it comes in this block
             return quantity <= 0;
@@ -236,8 +237,7 @@ public class Home extends Base {
             WebElement cartParent = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='cart MuiBox-root css-0']")));
             List<WebElement> cartContents = cm.findElementsFromParentByXPath(wait, cartParent, ".//div[@class='MuiBox-root css-0']");
 
-            ArrayList<String> actualCartContents = new ArrayList<>() {
-            };
+            ArrayList<String> actualCartContents = new ArrayList<>() {};
 
             for (WebElement cartItem : cartContents) {
                 actualCartContents.add(cm.findElementFromParentByXPath(wait, cartItem, "(//div[contains(@class,'css-1gjj37g')]/div)[position() mod 2 = 1]").getText().trim());
@@ -252,7 +252,7 @@ public class Home extends Base {
             return true;
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while verifying cart content");
-            log.error("{} Exception while verifying cart content : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while verifying cart content", e, Level.WARN);
             return false;
         }
     }
@@ -262,7 +262,8 @@ public class Home extends Base {
             return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Privacy policy"))));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while clicking Privacy Policy button");
-            log.error("{} Exception while clicking Privacy Policy button : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while clicking Privacy Policy button", e, Level.WARN);
+            log.error("{} Exception while clicking Privacy Policy button : {}", getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), getMessageFromException(e));
             return false;
         }
     }
@@ -272,7 +273,7 @@ public class Home extends Base {
             return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Terms of Service"))));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while clicking Terms of Service button");
-            log.error("{} Exception while clicking Terms of Service button : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while clicking Terms of Service button", e, Level.WARN);
             return false;
         }
     }
@@ -282,7 +283,7 @@ public class Home extends Base {
             return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("About us"))));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while clicking About Us button");
-            log.error("{} Exception while clicking About Us button : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while clicking About Us button", e, Level.WARN);
             return false;
         }
     }
@@ -292,7 +293,7 @@ public class Home extends Base {
             return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Contact us']"))));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while clicking Contact Us button");
-            log.error("{} Exception while clicking Contact Us button : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while clicking Contact Us button", e, Level.WARN);
             return false;
         }
     }
@@ -302,7 +303,7 @@ public class Home extends Base {
             return cm.sendKeys(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Name']"))), text);
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while sending name " + text + " in name text box");
-            log.error("{} Exception while sending name {} in name text box : {}", getCallerInfo(Thread.currentThread().getStackTrace()), text, getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while sending name" + text + " in name text box", e, Level.WARN);
             return false;
         }
     }
@@ -312,7 +313,7 @@ public class Home extends Base {
             return cm.sendKeys(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Email']"))), text);
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while sending email " + text + " in email text box");
-            log.error("{} Exception while sending email {} in email text box : {}", getCallerInfo(Thread.currentThread().getStackTrace()), text, getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while sending email " + text + " in email text box", e, Level.WARN);
             return false;
         }
     }
@@ -322,7 +323,7 @@ public class Home extends Base {
             return cm.sendKeys(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Message']"))), text);
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while sending message " + text + " in message text box");
-            log.error("{} Exception while sending message {} in message text box : {}", getCallerInfo(Thread.currentThread().getStackTrace()), text, getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while sending message " + text + " in message text box", e, Level.WARN);
             return false;
         }
     }
@@ -332,7 +333,7 @@ public class Home extends Base {
             return cm.click(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Contact Now']"))));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while clicking Contact Now button");
-            log.error("{} Exception while clicking Contact Now button : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while clicking Contact Now button", e, Level.WARN);
             return false;
         }
     }
@@ -342,7 +343,7 @@ public class Home extends Base {
             return wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//button[normalize-space()='Contact Now']")));
         } catch (Exception e) {
             logWarningInExtentReport(e, "Exception while waiting for invisibility of Contact Now button");
-            log.error("{} Exception while waiting for invisibility of Contact Now button : {}", getCallerInfo(Thread.currentThread().getStackTrace()), getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Exception while waiting for invisibility of Contact Now button", e, Level.WARN);
             return false;
         }
     }

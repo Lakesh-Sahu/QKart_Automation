@@ -1,6 +1,7 @@
 package qkart.utility;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.Level;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import java.io.File;
 import java.util.Arrays;
 
-import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.fail;
 
 public class Screenshot extends Base {
 
@@ -27,38 +28,9 @@ public class Screenshot extends Base {
                 return relativePath;
             }
         } catch (Exception e) {
-            assertFalse(false, "Taking screenshot : Fail" + Arrays.toString(e.getStackTrace()));
+            ContextManager.getContext().test.warning(getCallerInfoFromStackTrace(e.getStackTrace()) + " Taking screenshot : Fail : " + getMessageFromException(e));
+            logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Taking screenshot : Fail", e, Level.WARN);
         }
         return "";
     }
-
-
-//    public static void createScreenshotFolder() {
-//        try {
-//            File theDir = new File("screenshots/" + singleTimeStamp);
-//                if (!theDir.exists()) {
-//                    theDir.mkdirs();
-//                }
-//        } catch (Exception e) {
-//            assertFalse(false, "Creating screenshot/" + singleTimeStamp + " folder : Fail\n" + Arrays.toString(e.getStackTrace()));
-//        }
-//    }
-
-//    // takes the screenshot to track the test
-//    public static void takeScreenshot(String className, String methodName, String screenshotType, String description) {
-//        try {
-//            WebDriver driver = ContextManager.getContext().getDriver();
-//            if (driver != null) {
-//                String timestamp = String.valueOf(java.time.LocalDateTime.now()).replaceAll("[.:]", "");
-//                String fileName = String.format("%s_%s_%s_%s_%s.png", timestamp, className, methodName, screenshotType, description);
-//                String relativePath = "/screenshots/" + singleTimeStamp + "/" + fileName;
-//                TakesScreenshot scrShot = ((TakesScreenshot) driver);
-//                File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
-//                File DestFile = new File(System.getProperty("user.dir") + relativePath);
-//                FileUtils.copyFile(SrcFile, DestFile);
-//            }
-//        } catch (Exception e) {
-//            assertFalse(false, "Taking screenshot : Fail" + Arrays.toString(e.getStackTrace()));
-//        }
-//    }
 }

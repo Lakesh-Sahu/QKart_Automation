@@ -7,6 +7,8 @@ import qkart.pages.*;
 // This class is used to create the Object of classes per thread for parallel execution
 public class ObjectContext extends Base{
     private final WebDriver driver;
+    private final String className;
+    private final String methodName;
 
     public Register registration;
     public Login login;
@@ -19,8 +21,10 @@ public class ObjectContext extends Base{
     public CommonMethods cm;
     public ExtentTest test;
 
-    public ObjectContext(WebDriver driver, String callerInfo) {
+    public ObjectContext(WebDriver driver, String className, String methodName, String description) {
         this.driver = driver;
+        this.className = className;
+        this.methodName = methodName;
 
         registration = new Register(driver);
         login = new Login(driver);
@@ -32,10 +36,18 @@ public class ObjectContext extends Base{
         thanks = new Thanks(driver);
         cm = new CommonMethods(driver);
 
-        test = reports.createTest(callerInfo);
+        test = reports.createTest(className + " " + methodName + " " + description);
     }
 
     public WebDriver getDriver() {
         return driver;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public String getMethodName() {
+        return methodName;
     }
 }

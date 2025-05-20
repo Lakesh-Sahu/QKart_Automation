@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="qkart.testcases.TestsA" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-05-20T20:27:59" hostname="LAKESH-LAPTOP" time="80.624">
+  <properties/>
+  <testcase name="TestCase01[0](userTesterA, abc@123)" classname="qkart.testcases.TestsA" time="13.892"/>
+  <testcase name="TestCase04" classname="qkart.testcases.TestsA" time="20.781"/>
+  <testcase name="TestCase03" classname="qkart.testcases.TestsA" time="25.913"/>
+  <testcase name="TestCase02[0](userTesterA, abc@123)" classname="qkart.testcases.TestsA" time="26.469"/>
+  <testcase name="TestCase05[0](userTesterA, abc@123, YONEX Smash Badminton Racquet, Tan Leatherette Weekender Duffle, Addr line 1 addr Line 2 addr line 3)" classname="qkart.testcases.TestsA" time="31.399"/>
+  <testcase name="TestCase06[0](userTesterA, abc@123, Xtend Smart Watch, Yarine Floor Lamp, Addr line 1 addr Line 2 addr line 3)" classname="qkart.testcases.TestsA" time="59.48"/>
+  <system-out><![CDATA[
+[WARN ] 2025-05-21 01:58:25.011 qkart.utility.Base 190 - qkart.testcases.TestsA TestCase03 94 : Exception while getting search results : Expected condition failed: waiting for visibility of all elements located by By.className: css-sycj1h (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-3]
+
+[WARN ] 2025-05-21 01:58:25.589 qkart.utility.Base 190 - qkart.testcases.TestsA TestCase02 59 : Exception while registering user with username userTesterA_17477728816705982 and password abc@123 and confirm password abc@123 : Expected condition failed: waiting for url to be "https://crio-qkart-qa.vercel.app/login". Current url: "https://crio-qkart-qa.vercel.app/register" (tried for 10 second(s) with 500 milliseconds interval) [TestNG-test-All Testcases-2]
+]]></system-out>
+  <system-err><![CDATA[May 21, 2025 1:58:01 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 21, 2025 1:58:01 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 21, 2025 1:58:01 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 21, 2025 1:58:01 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 21, 2025 1:58:01 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 136.0.7103.114. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+May 21, 2025 1:58:01 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 136.0.7103.114. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+May 21, 2025 1:58:01 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 136.0.7103.114. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+May 21, 2025 1:58:01 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 136.0.7103.114. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+May 21, 2025 1:58:16 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 21, 2025 1:58:16 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 136.0.7103.114. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+May 21, 2025 1:58:21 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 21, 2025 1:58:21 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 136.0.7103.114. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+]]></system-err>
+</testsuite>
