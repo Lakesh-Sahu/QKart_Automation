@@ -155,34 +155,6 @@ public class Base {
         }
     }
 
-//    // log the result of test case if it is FAILED or SKIPPED
-//    public static void logExceptionInLog(Exception e, Level level, String status) {
-//        try {
-//            String className = e.getTestClass().getName();
-//            String methodName = result.getName();
-//            StringBuilder sb = new StringBuilder(className + " " + methodName);
-//            StackTraceElement parent = null;
-//            Throwable th = result.getThrowable();
-//            if (th != null) {
-//                for (StackTraceElement current : th.getStackTrace()) {
-//                    if (current.getClassName().equals(className)) {
-//                        sb.append(" ").append(current.getLineNumber()).append(" ").append(" : ").append(getMessageFromException(th));
-//                        break;
-//                    }
-//                    parent = current;
-//                }
-//                if (parent != null) {
-//                    sb.insert(0, " ").insert(0, parent.getLineNumber()).insert(0, " ").insert(0, parent.getMethodName()).insert(0, " ").insert(0, parent.getClassName());
-//                }
-//            }
-//            sb.append(" - ").append(status);
-//
-//            log.log(level, sb.toString());
-//        } catch (Exception e) {
-//            log.warn("Could not write test log for {} {}", result.getTestClass().getName(), result.getName(), e.getMessage().split("\n")[0]);
-//        }
-//    }
-
     // log the result of test case if it is FAILED or SKIPPED
     public static void logExceptionInLog(String callerInfo, String message, Exception e, Level level) {
         try {

@@ -84,52 +84,6 @@ public class Listener extends Base implements ITestListener {
         }
     }
 
-    // log the result of test case if it is FAILED or SKIPPED
-//    private void logResult(ITestResult result, Level level, String status) {
-//        try {
-//            Throwable throwable = result.getThrowable();
-//            if (throwable != null) {
-//                for (StackTraceElement element : throwable.getStackTrace()) {
-//                    if (element.getClassName().equals(result.getTestClass().getName())) {
-//                        int lineNumber = element.getLineNumber();
-//                        String fileName = element.getFileName();
-//                        String message = fileName + " " + result.getMethod().getMethodName() + " " + lineNumber + " - " + result.getThrowable().getMessage() + " - " + status;
-//
-//                        log.error(message);
-//                        break;
-//                    }
-//                }
-//            }
-//        } catch (Exception e) {
-//        }
-//
-//        try {
-//            String className = result.getTestClass().getName();
-//            String methodName = result.getName();
-//            StringBuilder sb = new StringBuilder(className + " " + methodName);
-//            StackTraceElement parent = null;
-//            Throwable th = result.getThrowable();
-//            if (th != null) {
-//                for (StackTraceElement current : th.getStackTrace()) {
-//                    if (current.getClassName().equals(className)) {
-//                        sb.append(" ").append(current.getLineNumber()).append(" ").append(" : ").append(getMessageFromException(th));
-//                        break;
-//                    }
-//                    parent = current;
-//                }
-//                if (parent != null) {
-//                    sb.insert(0, " ").insert(0, parent.getLineNumber()).insert(0, " ").insert(0, parent.getMethodName()).insert(0, " ").insert(0, parent.getClassName());
-//                }
-//            }
-//            sb.append(" - ").append(status);
-//
-//            log.log(level, sb.toString());
-//        } catch (Exception e) {
-//              logWarningInExtentReport(e, "Could not write test log for " + result.getTestClass().getName() + " " +  result.getName());
-//              logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()),"Could not write test log for " + result.getTestClass().getName() + " " +  result.getName(), e, Level.WARN);
-//        }
-//    }
-
     private String getCallerInfoFromITestResult(ITestResult result, String status) {
         try {
             Throwable throwable = result.getThrowable();

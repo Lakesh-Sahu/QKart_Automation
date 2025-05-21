@@ -7,9 +7,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
-import java.util.Arrays;
-
-import static org.testng.Assert.fail;
 
 public class Screenshot extends Base {
 
