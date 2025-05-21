@@ -52,47 +52,47 @@ cart management, order placement, and payment — ensuring a reliable and seamle
 ---
 
 ## 📁 Project Structure
-
-QKart_Automation/
-├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   └── qkart/
-│   │   │   │    ├── pages/                     # Page Object classes
-│   │   │   │    │   ├── AboutUs.java
-│   │   │   │    │   ├── Checkout.java
-│   │   │   │    │   ├── Home.java
-│   │   │   │    │   ├── Login.java
-│   │   │   │    │   ├── PrivacyPolicy.java
-│   │   │   │    │   ├── Register.java
-│   │   │   │    │   ├── SearchResult.java
-│   │   │   │    │   ├── TermsOfService.java
-│   │   │   │    │   └── Thanks.java
-│   │   │   │    ├── utility/                   # Utility and config classes
-│   │   │   │    │    ├── Base.java
-│   │   │   │    │    ├── CommonMethods.java
-│   │   │   │    │    ├── ContextManager.java
-│   │   │   │    │    ├── DriverFactory.java
-│   │   │   │    │    ├── Listener.java
-│   │   │   │    │    ├── ObjectContext.java
-│   │   │   │    │    └── Screenshot.java   
-│   │   │   │    └── App.java
-│   │   │   └── resources/
-│   │   │       └── log4j2.properties           # Logging configuration
-│   │   └── test/
-│   │       ├── java/
-│   │       │   └── qkart.testcases/            # TestNG test classes
-│   │       │       ├── TestsA.java
-│   │       │       └── TestsB.java
-│   │       └── resources/
-│   │           └── testng.xml                  # TestNG suite configuration
-│   ├── extent_reports                          # Extent Report and Screenshot
-│   └── logs                                    # Logs
-├── build.gradle                                # Gradle build script
-├── settings.gradle                             # Gradle settings
-└── README.md                                   # Project documentation
-
+```
+📦 QKart_Automation/
+├── 📁 app/
+│   ├── 📁 src/
+│   │   ├── 📁 main/
+│   │   │   ├── 📁 java/
+│   │   │   │   └── 📁 qkart/
+│   │   │   │    ├── 📁 pages/                     # Page Object classes
+│   │   │   │    │   ├── 📄 AboutUs.java
+│   │   │   │    │   ├── 📄 Checkout.java
+│   │   │   │    │   ├── 📄 Home.java
+│   │   │   │    │   ├── 📄 Login.java
+│   │   │   │    │   ├── 📄 PrivacyPolicy.java
+│   │   │   │    │   ├── 📄 Register.java
+│   │   │   │    │   ├── 📄 SearchResult.java
+│   │   │   │    │   ├── 📄 TermsOfService.java
+│   │   │   │    │   └── 📄 Thanks.java
+│   │   │   │    ├── 📁 utility/                   # Utility and config classes
+│   │   │   │    │    ├── 📄 Base.java
+│   │   │   │    │    ├── 📄 CommonMethods.java
+│   │   │   │    │    ├── 📄 ContextManager.java
+│   │   │   │    │    ├── 📄 DriverFactory.java
+│   │   │   │    │    ├── 📄 Listener.java
+│   │   │   │    │    ├── 📄 ObjectContext.java
+│   │   │   │    │    └── 📄 Screenshot.java   
+│   │   │   │    └── 📄 App.java
+│   │   │   └── 📁 resources/
+│   │   │       └── 🛠️ log4j2.properties           # Logging configuration
+│   │   └── 📁 test/
+│   │       ├── 📁 java/
+│   │       │   └── 📁 qkart.testcases/            # TestNG test classes
+│   │       │       ├── 📄 TestsA.java
+│   │       │       └── 📄 TestsB.java
+│   │       └── 📁 resources/
+│   │           └── 🧪 testng.xml                  # TestNG suite configuration
+│   ├── 📁 extent_reports                          # Extent Report and Screenshot
+│   └── 📁 logs                                    # Logs
+├── ⚙️ build.gradle                                # Gradle build script
+├── ⚙️ settings.gradle                             # Gradle settings
+└── 📘 README.md                                   # Project documentation
+```
 ---
 
 ## 🚀 Getting Started
