@@ -102,19 +102,19 @@ cart management, order placement, and payment — ensuring a reliable and seamle
 - IDE
 - Java JDK 14+
 - Chrome/Edge/FireFox/Safari browser
-- Gradle installed or use `gradlew`
+- Gradle or use gradlew
 
 ### Setup & Run
 
 1. **Clone the Repository**
-   git clone https://github.com/Lakesh-Sahu/QKart_Automation.git
-   cd QKart_Automation
+   `git clone https://github.com/Lakesh-Sahu/QKart_Automation.git`
+   cd `QKart_Automation`
 
 2. Run Tests using Gradle
-   ./gradlew clean test
+   `./gradlew clean test`
 
-3. Or run specific tests with TestNG
-   ./gradlew test --tests "qkart.testcases.TestClassName"
+3. Or run specific tests class with TestNG
+   `./gradlew test --tests "qkart.testcases.TestClassName"`
 
 📋 Test Configuration
 - TestNG configuration can be managed via the testng.xml file for grouping, method, class, package, suite, cross browser or parallel execution.
@@ -122,7 +122,7 @@ cart management, order placement, and payment — ensuring a reliable and seamle
 📝 Report
 - Report is managed by ExtentReports and stored in the extent_reports/ directory.
 - Each assertion and page includes pass, fail, skip, warning information for troubleshooting and traceability.
-- 
+  
 📝 Logs
 - Log output is managed by Log4j and stored in the logs/ directory.
 - Each page includes error or debug-level information for troubleshooting and traceability.
