@@ -36,8 +36,11 @@ cart management, order placement, and payment — ensuring a reliable and seamle
 ✅ Features
 
 🔁 Parallel Test Execution
-- Supports parallel execution at both method and class levels.
-- Configurable via testng.xml.
+- Supports **parallel execution** at both **method** and **class** levels.
+- Configurable via `testng.xml` for flexible test execution control.
+- Achieved up to **260% improvement in execution speed** by leveraging TestNG’s and LocalThread parallel execution features.
+- Well-suited for **large-scale test suites** and designed to support **future integration with CI/CD pipelines**.
+- Enables **faster regression testing** by significantly reducing total test run time.
 
 🌐 Multiple-Browser Support
 - Supports running tests on Chrome, Edge, Firefox, and Safari.
