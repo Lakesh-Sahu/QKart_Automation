@@ -131,6 +131,6 @@ cart management, order placement, and payment — ensuring a reliable and seamle
 - Each page includes error or debug-level information for troubleshooting and traceability.
 
 📌 Design Pattern
-- Follows Page Object Model (POM):
+- Follow Page Object Model (POM):
 - Improves readability, maintainability, and reusability of code.
 - Each web page is represented by a Java class that encapsulates its elements and interactions.
