@@ -1,7 +1,7 @@
 ## 🛍️ Project Name: QKart Automation
 **Domain**: E-commerce
 
-QKart is an end-to-end automated testing framework developed for a demo e-commerce platform.
+QKart Automation is an end-to-end automated testing framework developed for a demo e-commerce platform Qkart.
 This automation suite validates key user journeys like user registration, login, product search,
 cart management, order placement, and payment — ensuring a reliable and seamless shopping experience.
 

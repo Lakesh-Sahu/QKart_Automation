@@ -2,14 +2,14 @@ package qkart.utility;
 
 import org.openqa.selenium.WebDriver;
 
-public class ContextManager {
-    private static final ThreadLocal<ObjectContext> context = new ThreadLocal<>();
+public class ObjectManager {
+    private static final ThreadLocal<ObjectCreator> context = new ThreadLocal<>();
 
     public static void init(WebDriver driver, String className, String methodName, String description) {
-        context.set(new ObjectContext(driver, className, methodName, description));
+        context.set(new ObjectCreator(driver, className, methodName, description));
     }
 
-    public static ObjectContext getContext() {
+    public static ObjectCreator getContext() {
         return context.get();
     }
 

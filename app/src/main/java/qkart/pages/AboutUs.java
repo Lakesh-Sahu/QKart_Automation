@@ -3,15 +3,12 @@ package qkart.pages;
 import org.apache.logging.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import qkart.utility.CommonMethods;
 import qkart.utility.Base;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AboutUs extends Base {
 

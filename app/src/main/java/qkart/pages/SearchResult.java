@@ -82,7 +82,7 @@ public class SearchResult extends Base {
         }
     }
 
-    // Return boolean if the table headers and body of the size chart matches the expected values
+    // Return boolean if the table headers and body of the size chart match the expected values
     public boolean validateSizeChartContents(List<String> expectedTableHeaders, List<List<String>> expectedTableBody) {
         try {
             WebElement sizeChartParent = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("MuiDialog-paperScrollPaper")));

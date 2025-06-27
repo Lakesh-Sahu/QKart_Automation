@@ -3,8 +3,8 @@ package qkart.testcases;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.*;
 import qkart.pages.SearchResult;
-import qkart.utility.ContextManager;
-import qkart.utility.ObjectContext;
+import qkart.utility.ObjectManager;
+import qkart.utility.ObjectCreator;
 import qkart.utility.Base;
 import static org.testng.Assert.*;
 
@@ -17,7 +17,7 @@ public class TestsA extends Base {
     @Parameters({"usernameA", "password"})
     public void TestCase01(String username, String password) {
 
-        ObjectContext oc = ContextManager.getContext();
+        ObjectCreator oc = ObjectManager.getContext();
 
         // Generated dynamic username
         String usernameDynamic = oc.cm.generateDynamicUserName(username);
@@ -36,11 +36,11 @@ public class TestsA extends Base {
         assertTrue(oc.homePage.performLogout(), "User is able to logout after login from home page");
     }
 
-    @Test(enabled = true, description = "Verify re-registering an already registered user fails", priority = 2, groups = {"Sanity_test", "T2"})
+    @Test(enabled = true, description = "Verify re-registering an already registered user fails", priority = 2, groups = {"Sanity_test"})
     @Parameters({"usernameA", "password"})
     public void TestCase02(String username, String password) {
 
-        ObjectContext oc = ContextManager.getContext();
+        ObjectCreator oc = ObjectManager.getContext();
 
         // Generated dynamic username
         String usernameDynamic = oc.cm.generateDynamicUserName(username);
@@ -50,19 +50,18 @@ public class TestsA extends Base {
         assertTrue(oc.registration.registerUser(usernameDynamic, password, password), "User is able to register with new username and password");
 
 
-        // Visit the Registration page and try to register using the previously
-        // registered user's credentials
+        // Visit the Registration page and try to register using the previously registered user's credentials
         assertTrue(oc.registration.navigateToRegisterPage(), "User is able to navigate to register page");
         assertTrue(oc.registration.verifyOnRegisterPage(), "User is on registration page");
-        // If status is true, then registration succeeded, else registration has
-        // failed. In this case registration failure means Success
+        // If status is true, then registration succeeded, else registration has failed.
+        // In this case, registration failure means Success
         assertFalse(oc.registration.registerUser(usernameDynamic, password, password), "User is not able to re-registering an already registered user");
     }
 
-    @Test(enabled = true, description = "Verify the search box functionality ", priority = 3, groups = {"Sanity_test", "T3"})
+    @Test(enabled = true, description = "Verify the search box functionality ", priority = 3, groups = {"Sanity_test"})
     public void TestCase03() {
 
-        ObjectContext oc = ContextManager.getContext();
+        ObjectCreator oc = ObjectManager.getContext();
 
         // Visit the home page
         assertTrue(oc.homePage.navigateToHome(), "User is able to navigate to home page");
@@ -99,9 +98,9 @@ public class TestsA extends Base {
 
     @Test(enabled = true, description = "Verify the existence of size chart for certain items and validate contents of size chart", priority = 4, groups = "Regression_Test")
     public void TestCase04() {
-        ObjectContext oc = ContextManager.getContext();
+        ObjectCreator oc = ObjectManager.getContext();
 
-        // Visit home page
+        // Visit the home page
         assertTrue(oc.homePage.navigateToHome(), "User is able to navigate to home page");
 
         String productName = "Running Shoes";
@@ -132,7 +131,7 @@ public class TestsA extends Base {
     @Test(enabled = true, description = "Verify that a new user can add multiple products in to the cart and checkout", priority = 5, groups = {"Sanity_test"})
     @Parameters({"usernameA", "password", "productName1", "productName2", "address"})
     public void TestCase05(String username, String password, String productName1, String productName2, String address) {
-        ObjectContext oc = ContextManager.getContext();
+        ObjectCreator oc = ObjectManager.getContext();
 
         // Generated dynamic username
         String usernameDynamic = oc.cm.generateDynamicUserName(username);
@@ -181,7 +180,7 @@ public class TestsA extends Base {
     @Test(enabled = true, description = " Verify the quantity of items in cart can be updated", priority = 6, groups = {"Regression_Test"})
     @Parameters({"usernameA", "password", "productName3", "productName4", "address"})
     public void TestCase06(String username, String password, String productName3, String productName4, String address) {
-        ObjectContext oc = ContextManager.getContext();
+        ObjectCreator oc = ObjectManager.getContext();
 
         // Generated dynamic username
         String usernameDynamic = oc.cm.generateDynamicUserName(username);

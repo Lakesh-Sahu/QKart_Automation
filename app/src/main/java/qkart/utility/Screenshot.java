@@ -13,7 +13,7 @@ public class Screenshot extends Base {
     // takes the screenshot to attach in the Extent Report
     public static String capture(String callerInfo) {
         try {
-            WebDriver driver = ContextManager.getContext().getDriver();
+            WebDriver driver = ObjectManager.getContext().getDriver();
 
             if (driver != null) {
                 String timestamp = String.valueOf(java.time.LocalDateTime.now()).replaceAll("[.:]", "");
@@ -25,7 +25,7 @@ public class Screenshot extends Base {
                 return relativePath;
             }
         } catch (Exception e) {
-            ContextManager.getContext().test.warning(getCallerInfoFromStackTrace(e.getStackTrace()) + " Taking screenshot : Fail : " + getMessageFromException(e));
+            ObjectManager.getContext().test.warning(getCallerInfoFromStackTrace(e.getStackTrace()) + " Taking screenshot : Fail : " + getMessageFromException(e));
             logExceptionInLog(getCallerInfoFromStackTrace(Thread.currentThread().getStackTrace()), "Taking screenshot : Fail", e, Level.WARN);
         }
         return "";

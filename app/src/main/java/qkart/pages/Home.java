@@ -117,7 +117,8 @@ public class Home extends Base {
         }
     }
 
-    // Finds all the result card content of each of search results and return; if no result is found then it returns empty ArrayList
+    // Finds all the result card content of all search results and return;
+    // if no result is found, then it returns empty ArrayList
     public List<WebElement> getSearchResults() {
         try {
             return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("css-sycj1h")));
@@ -148,7 +149,7 @@ public class Home extends Base {
                 if (productName.contains(cm.findElementFromParentByClassName(wait, card, "css-yg30e6").getText())) {
                     cm.click(card.findElement(By.tagName("button")));
 
-                    // Wait for the product to show on cart section and return true if product is added to the cart
+                    // Wait for the product to show on a cart section and return true if product is added to the cart
                     return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(String.format("//*[@class='MuiBox-root css-1gjj37g']/div[1][normalize-space()='%s']", productName)))) != null;
                 }
             }
@@ -172,10 +173,10 @@ public class Home extends Base {
         }
     }
 
-    // Return boolean denoting the status of change quantity of product in cart operation
+    // Return boolean denoting the status of change in quantity of product in cart operation
     public boolean changeProductQuantityInCart(String productName, int quantity) {
         try {
-            // If quantity is reached 0 or less than 0 then remove the item completely from the cart
+            // If quantity is reached 0 or less than 0, then remove the item completely from the cart
 
             // Locating the cart section
             WebElement cartParent = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("cart")));
@@ -213,7 +214,7 @@ public class Home extends Base {
                             return quantity == 0;
                         }
                     }
-                    // Return true when current quantity becomes equals to the required quantity
+                    // Return true when the current quantity becomes equals to the required quantity
                     return true;
                 }
             }
@@ -232,7 +233,7 @@ public class Home extends Base {
     public boolean verifyCartContents(List<String> expectedCartContents) {
         try {
             // Get all the cart items as an array of webelements
-            // Iterate through expectedCartContents and check if item with matching product name is present in the cart
+            // Iterate through expectedCartContents and check if an item with matching product name is present in the cart
 
             WebElement cartParent = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='cart MuiBox-root css-0']")));
             List<WebElement> cartContents = cm.findElementsFromParentByXPath(wait, cartParent, ".//div[@class='MuiBox-root css-0']");

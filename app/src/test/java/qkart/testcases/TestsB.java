@@ -2,8 +2,8 @@ package qkart.testcases;
 
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.*;
-import qkart.utility.ContextManager;
-import qkart.utility.ObjectContext;
+import qkart.utility.ObjectManager;
+import qkart.utility.ObjectCreator;
 import qkart.utility.Base;
 
 import static org.testng.Assert.*;
@@ -17,7 +17,7 @@ public class TestsB extends Base {
     @Parameters({"usernameB", "password", "productName5", "quantity", "address"})
     public void TestCase07(String username, String password, String productName5, int quantity, String address) {
 
-        ObjectContext oc = ContextManager.getContext();
+        ObjectCreator oc = ObjectManager.getContext();
 
         // Generated dynamic username
         String usernameDynamic = oc.cm.generateDynamicUserName(username);
@@ -58,7 +58,7 @@ public class TestsB extends Base {
     @Parameters({"usernameB", "password"})
     public void TestCase08(String username, String password) throws InterruptedException {
 
-        ObjectContext oc = ContextManager.getContext();
+        ObjectCreator oc = ObjectManager.getContext();
 
         // Generated dynamic username
         String usernameDynamic = oc.cm.generateDynamicUserName(username);
@@ -97,16 +97,16 @@ public class TestsB extends Base {
 
         assertTrue(oc.cm.closeWindow(), "User is able to close the privacy policy new tab");
 
-        assertTrue(oc.cm.switchToWindow(handles.toArray(new String[handles.size()])[0]), "User is able to switch to original window");
+        assertTrue(oc.cm.switchToWindow(handles.toArray(new String[0])[0]), "User is able to switch to original window");
 
         assertTrue(oc.homePage.performLogout(), "User is able to logout after login from home page");
     }
 
-    @Test(enabled = true, description = "Verify that Privacy Policy, Terms of Service and About Us links are working fine", priority = 9, groups = {"Regression_Test", "T2"})
+    @Test(enabled = true, description = "Verify that Privacy Policy, Terms of Service and About Us links are working fine", priority = 9, groups = {"Regression_Test"})
     @Parameters({"usernameB", "password"})
     public void TestCase09(String username, String password) throws InterruptedException {
 
-        ObjectContext oc = ContextManager.getContext();
+        ObjectCreator oc = ObjectManager.getContext();
 
         // Generated dynamic username
         String usernameDynamic = oc.cm.generateDynamicUserName(username);
@@ -165,7 +165,7 @@ public class TestsB extends Base {
 
     @Test(enabled = true, description = "Verify that the contact us dialog works fine", priority = 10, groups = {"Regression_Test"})
     public void TestCase10() {
-        ObjectContext oc = ContextManager.getContext();
+        ObjectCreator oc = ObjectManager.getContext();
 
         assertTrue(oc.homePage.navigateToHome(), "User is able to navigate to home page");
 
@@ -187,7 +187,7 @@ public class TestsB extends Base {
     @Test(enabled = true, description = "Ensure that the Advertisement Links on the QKART page are clickable", priority = 11, groups = {"Sanity_test"})
     @Parameters({"usernameB", "password"})
     public void TestCase11(String username, String password) throws InterruptedException {
-        ObjectContext oc = ContextManager.getContext();
+        ObjectCreator oc = ObjectManager.getContext();
 
         // Generated dynamic username
         String usernameDynamic = oc.cm.generateDynamicUserName(username);

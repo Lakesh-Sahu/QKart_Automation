@@ -106,7 +106,7 @@ public class Checkout extends Base {
     // Return boolean denoting the insufficient balance message is displayed or not
     public boolean verifyInsufficientBalanceMessage() {
         try {
-            //Find alert message showing "You do not have enough balance in your wallet for this purchase"
+            //Find an alert message showing "You do not have enough balance in your wallet for this purchase"
             WebElement alertMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("notistack-snackbar")));
             return alertMessage.getText().trim().equals("You do not have enough balance in your wallet for this purchase");
         } catch (Exception e) {

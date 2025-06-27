@@ -19,20 +19,20 @@ public class Listener extends Base implements ITestListener {
         String description = result.getMethod().getDescription();
 
         WebDriver driver = (new DriverFactory()).getDriver(browser);
-        ContextManager.init(driver, className, methodName, description);
+        ObjectManager.init(driver, className, methodName, description);
     }
 
     public void onTestSuccess(ITestResult result) {
         String callerInfo = getCallerInfoFromITestResult(result, "PASSED");
 
-        ContextManager.getContext().test.pass(callerInfo, MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo)).build());
+        ObjectManager.getContext().test.pass(callerInfo, MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo)).build());
     }
 
     public void onTestFailure(ITestResult result) {
         String callerInfo = getCallerInfoFromITestResult(result, "FAILED");
         String throwableCallerInfoMessage = "Error occurred : " + getThrowableCallerInfoMessageFromITestResult(result, "FAILED");
 
-        ContextManager.getContext().test.fail(throwableCallerInfoMessage, MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo)).build());
+        ObjectManager.getContext().test.fail(throwableCallerInfoMessage, MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo)).build());
 
         logResultInLog(result, "FAILED");
     }
@@ -42,7 +42,7 @@ public class Listener extends Base implements ITestListener {
             String callerInfo = getCallerInfoFromITestResult(result, "SKIPPED");
             String throwableCallerInfoMessage = "Error occurred : " + getThrowableCallerInfoMessageFromITestResult(result, "SKIPPED");
 
-            ContextManager.getContext().test.skip(throwableCallerInfoMessage, MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo)).build());
+            ObjectManager.getContext().test.skip(throwableCallerInfoMessage, MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo)).build());
 
             logResultInLog(result, "SKIPPED");
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class Listener extends Base implements ITestListener {
         log.info("##### Test Cases Ended #####");
     }
 
-    // log the result of test case if it is FAILED or SKIPPED
+    // log the result of a test case if it is FAILED or SKIPPED
     private void logResultInLog(ITestResult result, String status) {
         try {
             Throwable throwable = result.getThrowable();

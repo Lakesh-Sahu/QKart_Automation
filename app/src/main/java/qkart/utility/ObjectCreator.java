@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import qkart.pages.*;
 
 // This class is used to create the Object of classes per thread for parallel execution
-public class ObjectContext extends Base{
+public class ObjectCreator extends Base{
     private final WebDriver driver;
     private final String className;
     private final String methodName;
@@ -21,7 +21,7 @@ public class ObjectContext extends Base{
     public CommonMethods cm;
     public ExtentTest test;
 
-    public ObjectContext(WebDriver driver, String className, String methodName, String description) {
+    public ObjectCreator(WebDriver driver, String className, String methodName, String description) {
         this.driver = driver;
         this.className = className;
         this.methodName = methodName;

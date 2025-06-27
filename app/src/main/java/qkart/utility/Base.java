@@ -56,9 +56,9 @@ public class Base {
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         try {
-            if (ContextManager.getContext() != null && ContextManager.getContext().getDriver() != null) {
-                ContextManager.getContext().getDriver().quit();
-                ContextManager.remove();
+            if (ObjectManager.getContext() != null && ObjectManager.getContext().getDriver() != null) {
+                ObjectManager.getContext().getDriver().quit();
+                ObjectManager.remove();
             }
         } catch (Exception e) {
             logWarningInExtentReport(e, "Unable to tearDown");
@@ -114,7 +114,7 @@ public class Base {
 
     public static void logWarningInExtentReport(Exception e, String message) {
         try {
-            ObjectContext oc = ContextManager.getContext();
+            ObjectCreator oc = ObjectManager.getContext();
             String className = oc.getClassName();
             StringBuilder sb = new StringBuilder();
             StackTraceElement parent = null;
@@ -131,11 +131,11 @@ public class Base {
             }
             String callerInfo = sb.toString();
             sb.append(" ").append(message).append(" : ").append(getMessageFromException(e)).append(" - WARNING");
-            ContextManager.getContext().test.warning(sb.toString(), MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo + " - WARN")).build());
+            ObjectManager.getContext().test.warning(sb.toString(), MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo + " - WARN")).build());
 
         } catch (Exception ei) {
             String callerInfo = getCallerInfoFromStackTrace(ei.getStackTrace());
-            ContextManager.getContext().test.warning("Unable to log warning in extent report", MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo + " - WARN")).build());
+            ObjectManager.getContext().test.warning("Unable to log warning in extent report", MediaEntityBuilder.createScreenCaptureFromPath(Screenshot.capture(callerInfo + " - WARN")).build());
             logExceptionInLog(Arrays.toString(e.getStackTrace()), "Unable to log warning in extent report", e, Level.WARN);
         }
     }
@@ -155,7 +155,7 @@ public class Base {
         }
     }
 
-    // log the result of test case if it is FAILED or SKIPPED
+    // log the result of a test case if it is FAILED or SKIPPED
     public static void logExceptionInLog(String callerInfo, String message, Exception e, Level level) {
         try {
             StringBuilder sb = new StringBuilder();
