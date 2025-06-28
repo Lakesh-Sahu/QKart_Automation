@@ -8,7 +8,7 @@ cart management, order placement, and payment — ensuring a reliable and seamle
 ---
 
 ## ✅ Features Automated
-
+   
 - 🔐 **User Registration**
 - 🔓 **User Login**
 - 🔍 **Product Search**
@@ -16,7 +16,7 @@ cart management, order placement, and payment — ensuring a reliable and seamle
 - 💳 **Checkout and Payment**
 - 📦 **Place Order**
 - 💡 **Purchase from Suggestions**
-
+   
 ---
 
 ## 🛠️ Tech Stack
@@ -48,7 +48,7 @@ cart management, order placement, and payment — ensuring a reliable and seamle
 
 📸 Screenshot on Failure
 - Automatically captures a screenshot when any test step or test case fails or test case passes and attach the screenshot to that step in the Extent Report.
-- Have proper exceptions message and line at which test step fails with screenshots.
+- Have proper exceptions message and line at which a test step fails with screenshots.
 - Useful for debugging and tracking test failures.
 - Extent Report and Screenshots are saved in the specified directory (e.g., extent_reports/).
 
@@ -120,11 +120,11 @@ cart management, order placement, and payment — ensuring a reliable and seamle
    `./gradlew test --tests "qkart.testcases.TestClassName"`
 
 📋 Test Configuration
-- TestNG configuration can be managed via the testng.xml file for grouping, method, class, package, suite, cross browser or parallel execution.
+- TestNG configuration can be managed via the testng.xml file for grouping, method, class, package, suite, specific browser or parallel execution.
 
 📝 Report
 - Report is managed by ExtentReports and stored in the extent_reports/ directory.
-- Each assertion and page includes pass, fail, skip, warning information for troubleshooting and traceability.
+- Each assertion and method includes pass, fail, skip, warning information for troubleshooting and traceability.
   
 📝 Logs
 - Log output is managed by Log4j and stored in the logs/ directory.
