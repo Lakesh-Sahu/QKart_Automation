@@ -1,4 +1,4 @@
-## 🛍️ Project Name: QKart Automation
+# 🛍️ QKart Automation
 **Domain**: E-commerce
 
 QKart Automation is an end-to-end automated testing framework developed for a demo e-commerce platform Qkart.
@@ -33,20 +33,20 @@ cart management, order placement, and payment — ensuring a reliable and seamle
 
 ---
 
-✅ Features
+## ✅ Features
 
-🔁 Parallel Test Execution
+### 🔁 Parallel Test Execution
 - Supports **parallel execution** at both **method** and **class** levels.
 - Configurable via `testng.xml` for flexible test execution control.
 - Achieved up to **260% improvement in execution speed** by leveraging TestNG’s and LocalThread parallel execution features.
 - Well-suited for **large-scale test suites** and designed to support **future integration with CI/CD pipelines**.
 - Enables **faster regression testing** by significantly reducing total test run time.
 
-🌐 Multiple-Browser Support
+### 🌐 Multiple-Browser Support
 - Supports running tests on Chrome, Edge, Firefox, and Safari.
 - Set the desired browser in the testng.xml file.
 
-📸 Screenshot on Failure
+### 📸 Screenshot on Failure
 - Automatically captures a screenshot when any test step or test case fails or test case passes and attach the screenshot to that step in the Extent Report.
 - Have proper exceptions message and line at which a test step fails with screenshots.
 - Useful for debugging and tracking test failures.
@@ -55,6 +55,7 @@ cart management, order placement, and payment — ensuring a reliable and seamle
 ---
 
 ## 📁 Project Structure
+
 ```
 📦 QKart_Automation/
 ├── 📁 app/
@@ -100,37 +101,39 @@ cart management, order placement, and payment — ensuring a reliable and seamle
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### 🔧 Prerequisites
 
 - IDE
 - Java JDK 14+
 - Chrome/Edge/FireFox/Safari browser
 - Gradle or use gradlew
 
-### Setup & Run
+### 📦 Setup & Run
 
 1. **Clone the Repository**
    `git clone https://github.com/Lakesh-Sahu/QKart_Automation.git`
    cd `QKart_Automation`
 
-2. Run Tests using Gradle
+2. **Run Tests using Gradle**
    `./gradlew clean test`
 
-3. Or run specific tests class with TestNG
+3. **Or run specific tests class with TestNG**
    `./gradlew test --tests "qkart.testcases.TestClassName"`
 
-📋 Test Configuration
+---
+
+## 📋 Test Configuration
 - TestNG configuration can be managed via the testng.xml file for grouping, method, class, package, suite, specific browser or parallel execution.
 
-📝 Report
+## 📊 Report
 - Report is managed by ExtentReports and stored in the extent_reports/ directory.
 - Each assertion and method includes pass, fail, skip, warning information for troubleshooting and traceability.
   
-📝 Logs
+## 📝 Logs
 - Log output is managed by Log4j and stored in the logs/ directory.
 - Each page includes error or debug-level information for troubleshooting and traceability.
 
-📌 Design Pattern
+## 📌 Design Pattern
 - Follow Page Object Model (POM):
 - Improves readability, maintainability, and reusability of code.
 - Each web page is represented by a Java class that encapsulates its elements and interactions.
